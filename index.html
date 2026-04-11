@@ -999,7 +999,162 @@
     .yt-icon { font-size: 0.5rem; }
     .search-day-label { font-size: 0.85rem; }
   }
+
+  /* ── STAGE FILTER ──────────────────────── */
+  .legend { flex-wrap: wrap; }
+  .legend-item {
+    cursor: pointer;
+    padding: 0.25rem 0.4rem;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    transition: background 0.15s, border-color 0.15s;
+    user-select: none;
+  }
+  .legend-item:hover { background: rgba(255,255,255,0.06); }
+  .legend-item.stage-active {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.22);
+  }
+  .stage-filter-note {
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
+    color: rgba(245,237,224,0.4);
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 2px;
+    transition: color 0.15s;
+    white-space: nowrap;
+    align-self: center;
+    margin-left: auto;
+  }
+  .stage-filter-note:hover { color: var(--gold); }
+  .stage-filter-note.hidden { display: none; }
+  .stage-block.stage-filtered-out { display: none; }
+
+  /* ── VIEW TOGGLE ───────────────────────── */
+  .legend-controls {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-left: auto;
+  }
+  .view-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.22rem 0.55rem;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(245,237,224,0.4);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.15s;
+  }
+  .view-btn.active, .view-btn:hover {
+    background: rgba(255,255,255,0.08);
+    color: var(--sand);
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  /* ── TIMELINE VIEW ─────────────────────── */
+  .stages-timeline { display: none; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 0.5rem; }
+  body.view-timeline .stages-grid { display: none; }
+  body.view-timeline .stages-timeline { display: block; }
+
+  .tl-wrap { min-width: 680px; position: relative; }
+  .tl-header-row {
+    display: flex; align-items: flex-end; height: 22px;
+    margin-left: 88px; position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 3px;
+  }
+  .tl-hour-mark { position: absolute; display: flex; flex-direction: column; align-items: center; }
+  .tl-hour-label {
+    font-size: 0.48rem; letter-spacing: 0.05em;
+    color: rgba(245,237,224,0.3); text-transform: uppercase;
+    transform: translateX(-50%); white-space: nowrap;
+  }
+  .tl-hour-tick { width: 1px; height: 4px; background: rgba(255,255,255,0.1); }
+  .tl-row { display: flex; align-items: center; height: 34px; margin-bottom: 2px; }
+  .tl-stage-label {
+    width: 88px; flex-shrink: 0; font-size: 0.52rem;
+    letter-spacing: 0.05em; color: rgba(245,237,224,0.4);
+    text-align: right; padding-right: 7px; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .tl-track {
+    flex: 1; position: relative; height: 100%;
+    background: rgba(255,255,255,0.025); border-radius: 2px;
+  }
+  .tl-set {
+    position: absolute; top: 3px; bottom: 3px; border-radius: 2px;
+    display: flex; align-items: center; padding: 0 5px;
+    overflow: hidden; cursor: pointer; min-width: 3px;
+    transition: opacity 0.12s, filter 0.12s;
+  }
+  .tl-set:hover { opacity: 0.82; filter: brightness(1.15); }
+  .tl-set-artist {
+    font-size: 0.52rem; letter-spacing: 0.03em; color: rgba(0,0,0,0.82);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    pointer-events: none;
+  }
+  .tl-set.is-faved { outline: 1.5px solid rgba(255,26,61,0.85); outline-offset: 1px; }
+  .tl-set.is-past { opacity: 0.3; }
+  .tl-set.is-live { outline: 2px solid #6b8f71; outline-offset: 1px; }
+  .tl-now-line {
+    position: absolute; top: 0; bottom: 0; width: 1px;
+    background: rgba(107,143,113,0.75); pointer-events: none; z-index: 10;
+  }
+
+  /* ── COUNTDOWN BAR ─────────────────────── */
+  .countdown-bar {
+    background: rgba(212,168,67,0.07);
+    border: 1px solid rgba(212,168,67,0.18);
+    border-radius: 3px; padding: 0.6rem 1rem;
+    margin-bottom: 1rem; display: flex;
+    align-items: center; gap: 0.75rem; flex-wrap: wrap;
+  }
+  .countdown-label {
+    font-size: 0.5rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold); flex-shrink: 0;
+  }
+  .countdown-info { display: flex; flex-direction: column; gap: 0.15rem; }
+  .countdown-artist { font-size: 0.75rem; color: var(--sand); }
+  .countdown-stage {
+    font-size: 0.52rem; color: rgba(245,237,224,0.4);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .countdown-time {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem; letter-spacing: 0.08em;
+    color: var(--gold); margin-left: auto;
+  }
+
+  /* ── INLINE EMBEDS ─────────────────────── */
+  .embed-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.48rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(220,50,50,0.65); background: none;
+    border: 1px solid rgba(220,50,50,0.2);
+    border-radius: 2px; padding: 0.12rem 0.4rem;
+    cursor: pointer; flex-shrink: 0;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    margin-left: 0.3rem;
+  }
+  .embed-btn:hover { color: #ff4444; border-color: rgba(220,50,50,0.5); background: rgba(220,50,50,0.07); }
+  .embed-btn.active { color: #ff4444; border-color: rgba(220,50,50,0.45); background: rgba(220,50,50,0.08); }
+  .stage-embed { display: none; background: #000; }
+  .stage-embed.visible { display: block; }
+  .stage-embed iframe { display: block; width: 100%; aspect-ratio: 16/9; border: none; }
 </style>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#111009">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Coachella 2026">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 </head>
 <body>
 
@@ -1060,14 +1215,19 @@
 
   <!-- LEGEND -->
   <div class="legend">
-    <div class="legend-item"><div class="legend-dot dot-coachella"></div>Coachella Stage</div>
-    <div class="legend-item"><div class="legend-dot dot-outdoor"></div>Outdoor Theatre</div>
-    <div class="legend-item"><div class="legend-dot dot-sahara"></div>Sahara</div>
-    <div class="legend-item"><div class="legend-dot dot-mojave"></div>Mojave</div>
-    <div class="legend-item"><div class="legend-dot dot-gobi"></div>Gobi</div>
-    <div class="legend-item"><div class="legend-dot dot-sonora"></div>Sonora</div>
-    <div class="legend-item"><div class="legend-dot dot-yuma"></div>Yuma</div>
-    <div class="legend-item"><div class="legend-dot dot-quasar"></div>Quasar</div>
+    <div class="legend-item" data-dot="dot-coachella" onclick="filterByStage('dot-coachella')"><div class="legend-dot dot-coachella"></div>Coachella Stage</div>
+    <div class="legend-item" data-dot="dot-outdoor"   onclick="filterByStage('dot-outdoor')"><div class="legend-dot dot-outdoor"></div>Outdoor Theatre</div>
+    <div class="legend-item" data-dot="dot-sahara"    onclick="filterByStage('dot-sahara')"><div class="legend-dot dot-sahara"></div>Sahara</div>
+    <div class="legend-item" data-dot="dot-mojave"    onclick="filterByStage('dot-mojave')"><div class="legend-dot dot-mojave"></div>Mojave</div>
+    <div class="legend-item" data-dot="dot-gobi"      onclick="filterByStage('dot-gobi')"><div class="legend-dot dot-gobi"></div>Gobi</div>
+    <div class="legend-item" data-dot="dot-sonora"    onclick="filterByStage('dot-sonora')"><div class="legend-dot dot-sonora"></div>Sonora</div>
+    <div class="legend-item" data-dot="dot-yuma"      onclick="filterByStage('dot-yuma')"><div class="legend-dot dot-yuma"></div>Yuma</div>
+    <div class="legend-item" data-dot="dot-quasar"    onclick="filterByStage('dot-quasar')"><div class="legend-dot dot-quasar"></div>Quasar</div>
+    <span class="stage-filter-note hidden" id="stage-filter-note" onclick="filterByStage(activeStageFilter)">✕ Clear filter</span>
+    <div class="legend-controls">
+      <button class="view-btn active" data-view="list"     onclick="setView('list')">List</button>
+      <button class="view-btn"        data-view="timeline" onclick="setView('timeline')">Timeline</button>
+    </div>
   </div>
 
   <!-- FRIDAY -->
@@ -1190,8 +1350,7 @@
       <div class="stage-block">
         <div class="stage-header">
           <div class="stage-dot dot-yuma"></div>
-          <a class="stage-name" href="https://www.youtube.com/@coachella/streams" target="_blank" rel="noopener">Yuma</a>
-          <a class="yt-icon" href="https://www.youtube.com/@coachella/streams" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+          <span class="stage-name">Yuma</span>
         </div>
         <div class="sets-list">
           <div class="set-row"><div class="set-time">1:00 – 1:45 PM</div><div class="set-artist">Sahar Z</div></div>
@@ -1242,6 +1401,7 @@
       </div>
 
     </div>
+    <div class="stages-timeline"></div>
   </div>
 
   <!-- SATURDAY -->
@@ -1358,8 +1518,7 @@
       <div class="stage-block">
         <div class="stage-header">
           <div class="stage-dot dot-yuma"></div>
-          <a class="stage-name" href="https://www.youtube.com/@coachella/streams" target="_blank" rel="noopener">Yuma</a>
-          <a class="yt-icon" href="https://www.youtube.com/@coachella/streams" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+          <span class="stage-name">Yuma</span>
         </div>
         <div class="sets-list">
           <div class="set-row"><div class="set-time">1:00 – 2:00 PM</div><div class="set-artist">Yamagucci</div></div>
@@ -1409,6 +1568,7 @@
       </div>
 
     </div>
+    <div class="stages-timeline"></div>
   </div>
 
   <!-- SUNDAY -->
@@ -1524,8 +1684,7 @@
       <div class="stage-block">
         <div class="stage-header">
           <div class="stage-dot dot-yuma"></div>
-          <a class="stage-name" href="https://www.youtube.com/@coachella/streams" target="_blank" rel="noopener">Yuma</a>
-          <a class="yt-icon" href="https://www.youtube.com/@coachella/streams" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+          <span class="stage-name">Yuma</span>
         </div>
         <div class="sets-list">
           <div class="set-row"><div class="set-time">1:00 – 2:00 PM</div><div class="set-artist">LE YORA</div></div>
@@ -1574,6 +1733,7 @@
       </div>
 
     </div>
+    <div class="stages-timeline"></div>
   </div>
 
   <!-- MY SCHEDULE -->
@@ -1581,6 +1741,14 @@
     <div class="day-header">
       <div class="day-title">My Schedule</div>
       <div class="day-headliners">Your saved artists · sorted by time</div>
+    </div>
+    <div class="countdown-bar" id="countdown-bar" style="display:none">
+      <span class="countdown-label">Next up</span>
+      <div class="countdown-info">
+        <span class="countdown-artist" id="countdown-artist"></span>
+        <span class="countdown-stage"  id="countdown-stage"></span>
+      </div>
+      <span class="countdown-time" id="countdown-time"></span>
     </div>
     <div id="mysched-content">
       <div class="mysched-empty">No artists saved yet — tap ♥ on any set to add it here</div>
@@ -1598,7 +1766,7 @@
     3: { name: 'Mojave',          dot: 'dot-mojave',    url: 'https://www.youtube.com/live/HJVG2Ck3uuk?si=erfVlIkcz9snsYMA' },
     4: { name: 'Gobi',            dot: 'dot-gobi',      url: 'https://www.youtube.com/live/4C5p1tdRv6c?si=6HUtiO_T_MmUVHnF' },
     5: { name: 'Sonora',          dot: 'dot-sonora',    url: 'https://www.youtube.com/live/OGNPnQViI3g?si=P1MmTmKiRMmXJiYj' },
-    6: { name: 'Yuma',            dot: 'dot-yuma',      url: 'https://www.youtube.com/@coachella/streams' },
+    6: { name: 'Yuma',            dot: 'dot-yuma',      url: null },
     7: { name: 'Quasar',          dot: 'dot-quasar',    url: 'https://www.youtube.com/live/1KANGsDaRvw?si=AUNIfoyGA1pS1Y6e' },
     8: { name: 'Do LaB',          dot: 'dot-dolab',     url: null },
   };
@@ -2079,6 +2247,8 @@
         block.classList.toggle('search-no-match', !anyMatch);
       });
     });
+    // Re-apply stage filter on top of search results
+    if (activeStageFilter) applyStageFilter();
   }
   // ── END SEARCH ──────────────────────────────────────────
 
@@ -2109,6 +2279,12 @@
 
     // Sort by start time
     items.sort((a, b) => a.start - b.start);
+
+    // Set countdown to next upcoming faved set
+    const now = Date.now();
+    const upcoming = items.filter(i => i.start > now);
+    nextFavSetInfo = upcoming.length > 0 ? { artist: upcoming[0].artist, stage: upcoming[0].stage, start: upcoming[0].start } : null;
+    updateCountdown();
 
     // Detect conflicts — any two items on same day that overlap
     const conflictKeys = new Set();
@@ -2241,6 +2417,10 @@
           btn.title = 'Remove from saved';
         }
         saveFavs();
+        // Sync timeline blocks
+        document.querySelectorAll(`.tl-set[data-key="${key}"]`).forEach(tlEl => {
+          tlEl.classList.toggle('is-faved', favs.has(key));
+        });
         updateFavUI();
       });
       row.appendChild(btn);
@@ -2311,6 +2491,19 @@
     document.getElementById('live-clock').textContent = `${h}:${m}:${s} ${ampm}`;
   }
 
+  // Shared state for new features
+  let activeStageFilter = null;
+  let currentView = 'list';
+  let nextFavSetInfo = null;
+  const timelineBuilt = { fri: false, sat: false, sun: false };
+  const STAGE_DOT_COLORS = {
+    'dot-coachella': '#c8431a', 'dot-outdoor': '#d4a843',
+    'dot-sahara':    '#6b8f71', 'dot-mojave':  '#7a5ea0',
+    'dot-gobi':      '#3b8bbf', 'dot-sonora':  '#d4766a',
+    'dot-yuma':      '#4a9e8b', 'dot-quasar':  '#e0a030',
+    'dot-dolab':     '#c0436e',
+  };
+
   autoSelectDay();
   stampRows();
   renderTimes();
@@ -2325,9 +2518,208 @@
   updateClock();
   updateStatuses();
   updateNowPlaying();
+  initEmbeds();
   setInterval(updateClock, 1000);
+  setInterval(updateCountdown, 1000);
   setInterval(updateStatuses, 30000);
   setInterval(updateNowPlaying, 30000);
+  setInterval(updateTimelineNowLine, 60000);
+
+  // ── STAGE FILTER ──────────────────────────────────────
+  function filterByStage(dotClass) {
+    activeStageFilter = activeStageFilter === dotClass ? null : dotClass;
+    applyStageFilter();
+  }
+  function applyStageFilter() {
+    document.querySelectorAll('.legend-item[data-dot]').forEach(item => {
+      item.classList.toggle('stage-active', !!activeStageFilter && item.dataset.dot === activeStageFilter);
+    });
+    const note = document.getElementById('stage-filter-note');
+    if (note) note.classList.toggle('hidden', !activeStageFilter);
+    document.querySelectorAll('.stage-block').forEach(block => {
+      if (!activeStageFilter) {
+        block.classList.remove('stage-filtered-out');
+      } else {
+        const dot = block.querySelector('.stage-dot');
+        block.classList.toggle('stage-filtered-out', !dot || !dot.classList.contains(activeStageFilter));
+      }
+    });
+  }
+
+  // ── VIEW TOGGLE / TIMELINE ────────────────────────────
+
+  function hourToLabel(h) {
+    const h24 = h % 24;
+    const isPM = h24 >= 12;
+    const h12 = h24 === 0 ? 12 : h24 > 12 ? h24 - 12 : h24;
+    return `${h12}${isPM ? 'PM' : 'AM'}`;
+  }
+
+  function buildTimeline(dayId) {
+    const panel = document.getElementById('panel-' + dayId);
+    if (!panel) return '';
+    let minMs = Infinity, maxMs = -Infinity;
+    panel.querySelectorAll('.set-row').forEach(row => {
+      const s = parseInt(row.dataset.start), e = parseInt(row.dataset.end);
+      if (s && isFinite(s)) minMs = Math.min(minMs, s);
+      if (e && isFinite(e)) maxMs = Math.max(maxMs, e);
+    });
+    if (!isFinite(minMs)) return '';
+    const buf = 20 * 60 * 1000;
+    const rangeStart = minMs - buf, rangeEnd = maxMs + buf, totalMs = rangeEnd - rangeStart;
+    const hourMs = 3600000;
+    const firstHour = Math.ceil(rangeStart / hourMs) * hourMs;
+    let hoursHTML = '';
+    for (let t = firstHour; t <= rangeEnd; t += hourMs) {
+      const pct = ((t - rangeStart) / totalMs * 100).toFixed(2);
+      const d = new Date(t);
+      const h24 = parseInt(new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', hour: 'numeric', hour12: false }).format(d));
+      hoursHTML += `<div class="tl-hour-mark" style="left:${pct}%"><span class="tl-hour-label">${hourToLabel(h24 < 4 ? h24 + 24 : h24)}</span><div class="tl-hour-tick"></div></div>`;
+    }
+    const now = Date.now();
+    const nowPct = ((now - rangeStart) / totalMs * 100).toFixed(2);
+    const nowLine = `<div class="tl-now-line" style="left:${nowPct}%;${(now < rangeStart || now > rangeEnd) ? 'display:none' : ''}" data-range-start="${rangeStart}" data-total-ms="${totalMs}"></div>`;
+    let rowsHTML = '';
+    panel.querySelectorAll('.stage-block').forEach(block => {
+      const nameEl = block.querySelector('.stage-name');
+      const stageName = nameEl ? nameEl.textContent.trim() : '—';
+      const dotEl = block.querySelector('.stage-dot');
+      const dotClass = dotEl ? [...dotEl.classList].find(c => c.startsWith('dot-')) : '';
+      const color = STAGE_DOT_COLORS[dotClass] || '#555';
+      let setsHTML = '';
+      block.querySelectorAll('.set-row').forEach(row => {
+        const start = parseInt(row.dataset.start), end = parseInt(row.dataset.end);
+        if (!start || !end) return;
+        const key = getFavKey(row);
+        const artist = (row.querySelector('.set-artist')?.childNodes[0]?.textContent?.trim() || '').replace(/'/g, '&#39;');
+        const left  = ((start - rangeStart) / totalMs * 100).toFixed(2);
+        const width = ((end   - start)       / totalMs * 100).toFixed(2);
+        const cls = [
+          'tl-set',
+          favs.has(key)                        ? 'is-faved' : '',
+          row.classList.contains('is-live')    ? 'is-live'  : '',
+          row.classList.contains('is-past')    ? 'is-past'  : '',
+        ].filter(Boolean).join(' ');
+        setsHTML += `<div class="${cls}" data-key="${key}" style="left:${left}%;width:${width}%;background:${color};" title="${artist}" onclick="toggleFavByKey('${key.replace(/'/g,"\\'")}',this)"><span class="tl-set-artist">${artist}</span></div>`;
+      });
+      rowsHTML += `<div class="tl-row"><div class="tl-stage-label">${stageName}</div><div class="tl-track">${setsHTML}${nowLine}</div></div>`;
+    });
+    return `<div class="tl-wrap"><div class="tl-header-row">${hoursHTML}</div>${rowsHTML}</div>`;
+  }
+
+  function setView(v) {
+    currentView = v;
+    document.body.classList.toggle('view-timeline', v === 'timeline');
+    document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.dataset.view === v));
+    if (v === 'timeline') buildTimelineForActiveDay();
+  }
+
+  function buildTimelineForActiveDay() {
+    const activePanel = document.querySelector('.day-panel.active:not(#panel-mysched)');
+    if (!activePanel) return;
+    const dayId = activePanel.id.replace('panel-', '');
+    if (!timelineBuilt[dayId]) {
+      const tl = activePanel.querySelector('.stages-timeline');
+      if (tl) { tl.innerHTML = buildTimeline(dayId); timelineBuilt[dayId] = true; }
+    }
+    updateTimelineNowLine();
+  }
+
+  function updateTimelineNowLine() {
+    const now = Date.now();
+    document.querySelectorAll('.tl-now-line').forEach(line => {
+      const rs = parseInt(line.dataset.rangeStart), tm = parseInt(line.dataset.totalMs);
+      if (!rs || !tm) return;
+      const pct = (now - rs) / tm * 100;
+      if (pct < 0 || pct > 100) { line.style.display = 'none'; }
+      else { line.style.display = ''; line.style.left = pct.toFixed(2) + '%'; }
+    });
+  }
+
+  function toggleFavByKey(key, timelineEl) {
+    if (favs.has(key)) { favs.delete(key); timelineEl.classList.remove('is-faved'); }
+    else               { favs.add(key);    timelineEl.classList.add('is-faved');    }
+    saveFavs();
+    document.querySelectorAll('.set-row').forEach(row => {
+      if (getFavKey(row) === key) {
+        row.classList.toggle('is-faved', favs.has(key));
+        const btn = row.querySelector('.fav-btn');
+        if (btn) btn.title = favs.has(key) ? 'Remove from saved' : 'Save to watch later';
+      }
+    });
+    updateFavUI();
+  }
+
+  // ── COUNTDOWN ─────────────────────────────────────────
+  function updateCountdown() {
+    const bar = document.getElementById('countdown-bar');
+    if (!bar) return;
+    if (!nextFavSetInfo) { bar.style.display = 'none'; return; }
+    const now = Date.now();
+    if (now >= nextFavSetInfo.start) { buildMySchedule(); return; }
+    bar.style.display = '';
+    const diff = nextFavSetInfo.start - now;
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const timeStr = h > 0 ? `${h}h ${m}m ${s}s` : m > 0 ? `${m}m ${s}s` : `${s}s`;
+    const artistEl = document.getElementById('countdown-artist');
+    const stageEl  = document.getElementById('countdown-stage');
+    const timeEl   = document.getElementById('countdown-time');
+    if (artistEl) artistEl.textContent = nextFavSetInfo.artist;
+    if (stageEl)  stageEl.textContent  = nextFavSetInfo.stage;
+    if (timeEl)   timeEl.textContent   = timeStr;
+  }
+
+  // ── EMBEDS ────────────────────────────────────────────
+  function extractYTEmbedURL(url) {
+    if (!url) return null;
+    let m = url.match(/youtube\.com\/live\/([A-Za-z0-9_-]+)/);
+    if (m) return `https://www.youtube.com/embed/${m[1]}?autoplay=1`;
+    m = url.match(/[?&]v=([A-Za-z0-9_-]+)/);
+    if (m) return `https://www.youtube.com/embed/${m[1]}?autoplay=1`;
+    return null;
+  }
+
+  function initEmbeds() {
+    document.querySelectorAll('.stage-block').forEach(block => {
+      const ytLink = block.querySelector('a.yt-icon');
+      if (!ytLink) return;
+      const embedURL = extractYTEmbedURL(ytLink.href);
+      if (!embedURL) return;
+      const btn = document.createElement('button');
+      btn.className = 'embed-btn';
+      btn.textContent = '▷ Embed';
+      btn.title = 'Watch stream inline';
+      btn.addEventListener('click', (e) => { e.stopPropagation(); toggleEmbed(block, btn, embedURL); });
+      ytLink.parentNode.insertBefore(btn, ytLink);
+      const embedDiv = document.createElement('div');
+      embedDiv.className = 'stage-embed';
+      block.appendChild(embedDiv);
+    });
+  }
+
+  function toggleEmbed(block, btn, embedURL) {
+    const embedDiv = block.querySelector('.stage-embed');
+    if (!embedDiv) return;
+    const isOpen = embedDiv.classList.contains('visible');
+    if (isOpen) {
+      embedDiv.classList.remove('visible'); embedDiv.innerHTML = '';
+      btn.classList.remove('active'); btn.textContent = '▷ Embed';
+    } else {
+      document.querySelectorAll('.stage-embed.visible').forEach(o => { o.classList.remove('visible'); o.innerHTML = ''; });
+      document.querySelectorAll('.embed-btn.active').forEach(b => { b.classList.remove('active'); b.textContent = '▷ Embed'; });
+      embedDiv.innerHTML = `<iframe src="${embedURL}" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"></iframe>`;
+      embedDiv.classList.add('visible');
+      btn.classList.add('active'); btn.textContent = '✕ Close';
+      block.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  // ── SERVICE WORKER ────────────────────────────────────
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  }
 
   function switchDay(day) {
     document.querySelectorAll('.day-panel').forEach(p => p.classList.remove('active'));
@@ -2340,6 +2732,11 @@
     if (day === 'mysched') buildMySchedule();
     // Clear search when switching days
     if (day !== 'mysched') clearSearch();
+    // Build timeline for the new day if in timeline view
+    if (day !== 'mysched' && currentView === 'timeline') buildTimelineForActiveDay();
+    // Close any open embeds when switching days
+    document.querySelectorAll('.stage-embed.visible').forEach(o => { o.classList.remove('visible'); o.innerHTML = ''; });
+    document.querySelectorAll('.embed-btn.active').forEach(b => { b.classList.remove('active'); b.textContent = '▷ Embed'; });
   }
 </script>
 
