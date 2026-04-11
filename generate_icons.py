@@ -65,30 +65,30 @@ def make_icon(size):
 
     padding = size * 0.08
 
-    # Auto-fit "COACHELLA" to icon width
-    fs = int(size * 0.30)
+    # Auto-fit "C" to ~60% of icon width
+    fs = int(size * 0.60)
     while fs > 8:
         f = load_font(fs)
-        bb = draw.textbbox((0, 0), 'COACHELLA', font=f)
+        bb = draw.textbbox((0, 0), 'C', font=f)
         if (bb[2] - bb[0]) <= size - padding * 2:
             break
         fs -= 1
     font_top = load_font(fs)
 
-    # "26" slightly larger than COACHELLA height
-    font_bot = load_font(int(fs * 1.1))
+    # "26" at similar size to "C"
+    font_bot = load_font(int(fs * 0.65))
 
     # Measure both lines
-    bb_top = draw.textbbox((0, 0), 'COACHELLA', font=font_top)
-    bb_bot = draw.textbbox((0, 0), '26',        font=font_bot)
+    bb_top = draw.textbbox((0, 0), 'C',  font=font_top)
+    bb_bot = draw.textbbox((0, 0), '26', font=font_bot)
     top_w, top_h = bb_top[2] - bb_top[0], bb_top[3] - bb_top[1]
     bot_w, bot_h = bb_bot[2] - bb_bot[0], bb_bot[3] - bb_bot[1]
 
-    gap = int(size * 0.04)
+    gap = int(size * 0.02)
     total_h = top_h + gap + bot_h
 
     # Center the block vertically with a slight downward nudge
-    block_top = (size - total_h) / 2 + size * 0.05
+    block_top = (size - total_h) / 2 + size * 0.03
 
     top_x = (size - top_w) / 2 - bb_top[0]
     top_y = block_top - bb_top[1]
@@ -96,14 +96,11 @@ def make_icon(size):
     bot_x = (size - bot_w) / 2 - bb_bot[0]
     bot_y = block_top + top_h + gap - bb_bot[1]
 
-    # "COACH" in sand, "ELLA" in burnt orange — mirrors the page header
-    coach_bb = draw.textbbox((0, 0), 'COACH', font=font_top)
-    coach_w  = coach_bb[2] - coach_bb[0]
-    draw.text((top_x,            top_y), 'COACH', font=font_top, fill=(245, 237, 224))  # sand
-    draw.text((top_x + coach_w,  top_y), 'ELLA',  font=font_top, fill=(232, 105, 42))   # #e8692a burnt
+    # "C" in sand
+    draw.text((top_x, top_y), 'C', font=font_top, fill=(245, 237, 224))  # sand
 
-    # "26" in rust
-    draw.text((bot_x, bot_y), '26', font=font_bot, fill=(200, 67, 26))  # #c8431a
+    # "26" in burnt orange
+    draw.text((bot_x, bot_y), '26', font=font_bot, fill=(232, 105, 42))  # #e8692a burnt
 
     return img
 
