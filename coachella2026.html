@@ -1,0 +1,2347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coachella 2026 — Weekend 1 Stream Schedule</title>
+<style>
+  @font-face {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/JTUSjIg69CK48gW7PXooxW4.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'DM Mono';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('fonts/aFTR7PB1QTsUX8KYvrGyIYQ.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'DM Mono';
+    font-style: italic;
+    font-weight: 300;
+    font-display: swap;
+    src: url('fonts/aFTT7PB1QTsUX8KYth-orYataA.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'DM Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/aFTU7PB1QTsUX8KYhh0.ttf') format('truetype');
+  }
+</style>
+<style>
+  :root {
+    --sand: #f5ede0;
+    --rust: #c8431a;
+    --burnt: #e8692a;
+    --sage: #6b8f71;
+    --dusk: #1a1410;
+    --gold: #d4a843;
+    --mist: #e0d8cc;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #111009;
+    color: var(--sand);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--dusk);
+    padding: 2rem 2rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--rust) 0%, transparent 70%);
+    opacity: 0.4;
+  }
+
+  .header-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 10vw, 6rem);
+    color: var(--sand);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+  }
+
+  h1 span {
+    color: var(--burnt);
+  }
+
+  .header-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .header-meta-row1,
+  .header-meta-row2 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .meta-pill {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--mist);
+    text-transform: uppercase;
+  }
+
+  /* DAY TABS */
+  .day-tabs {
+    display: flex;
+    border-bottom: 2px solid var(--dusk);
+    background: var(--dusk);
+    gap: 2px;
+    padding: 0 2rem;
+    padding-top: 0.5rem;
+  }
+
+  .tab-btn {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    padding: 0.6rem 1.6rem 0.5rem;
+    background: transparent;
+    color: rgba(245,237,224,0.4);
+    border: none;
+    cursor: pointer;
+    border-radius: 3px 3px 0 0;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .tab-btn.active {
+    background: #2a2218;
+    color: var(--sand);
+  }
+
+  .tab-btn:not(.active):hover {
+    color: var(--gold);
+  }
+
+  /* MAIN CONTENT */
+  main {
+    padding: 1.5rem 2rem 3rem;
+    max-width: 1100px;
+  }
+
+  .day-panel {
+    display: none;
+    animation: fadeIn 0.25s ease;
+  }
+
+  .day-panel.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .day-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1.2rem 0 1rem;
+    border-bottom: 1px solid rgba(245,237,224,0.1);
+    margin-bottom: 1.5rem;
+  }
+
+  .day-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--rust);
+    letter-spacing: 0.05em;
+  }
+
+  .day-headliners {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-style: italic;
+  }
+
+  /* STAGE GRID */
+  .stages-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  .stage-block {
+    border: 1px solid rgba(245,237,224,0.08);
+    border-radius: 3px;
+    overflow: hidden;
+    background: #1e1a12;
+  }
+
+  .stage-block.collapsed .sets-list {
+    display: none;
+  }
+
+  .stage-block.collapsed {
+    opacity: 0.5;
+  }
+
+  .stage-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1rem;
+    background: #0e0c08;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .stage-header:hover {
+    background: #1a1610;
+  }
+
+  .collapse-arrow {
+    margin-left: 0.3rem;
+    font-size: 0.55rem;
+    color: rgba(245,237,224,0.35);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .stage-block.collapsed .collapse-arrow {
+    transform: rotate(-90deg);
+  }
+
+  .stage-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .stage-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    color: var(--sand);
+    text-decoration: none;
+  }
+
+  .stage-name:hover {
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .yt-icon {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(220,50,50,0.75);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .yt-icon:hover {
+    color: #ff1a1a;
+  }
+
+  .yt-icon svg {
+    width: 14px;
+    height: 10px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+
+  .stage-tag {
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,237,224,0.35);
+    font-style: italic;
+  }
+
+  .sets-list {
+    padding: 0.5rem 0;
+  }
+
+  .set-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    align-items: center;
+    padding: 0.35rem 1rem;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(245,237,224,0.05);
+    transition: background 0.12s;
+  }
+
+  .set-row:last-child {
+    border-bottom: none;
+  }
+
+  .set-row:hover {
+    background: rgba(245,237,224,0.05);
+  }
+
+  .set-row.headliner {
+    background: linear-gradient(90deg, rgba(200,67,26,0.12) 0%, transparent 100%);
+  }
+
+  .set-row.headliner:hover {
+    background: linear-gradient(90deg, rgba(200,67,26,0.2) 0%, rgba(245,237,224,0.04) 100%);
+  }
+
+  .set-time {
+    font-size: 0.62rem;
+    letter-spacing: 0.03em;
+    color: rgba(245,237,224,0.4);
+    white-space: nowrap;
+    font-style: italic;
+  }
+
+  .set-artist {
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    color: rgba(245,237,224,0.9);
+  }
+
+  .set-row.headliner .set-artist {
+    font-weight: 400;
+    color: var(--rust);
+    letter-spacing: 0.06em;
+  }
+
+  .headliner-badge {
+    display: inline-block;
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--rust);
+    color: white;
+    padding: 0.1rem 0.4rem;
+    border-radius: 2px;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+  }
+
+  /* LIVE / PAST / UPCOMING */
+  .set-row.is-past {
+    opacity: 0.38;
+  }
+
+  .set-row.is-past .set-artist {
+    text-decoration: line-through;
+    text-decoration-color: rgba(245,237,224,0.55);
+    text-decoration-thickness: 1.5px;
+  }
+
+  .set-row.is-live {
+    background: linear-gradient(90deg, rgba(107,143,113,0.18) 0%, transparent 100%) !important;
+    border-left: 3px solid var(--sage);
+    padding-left: calc(1rem - 3px);
+  }
+
+  .set-row.is-live:hover {
+    background: linear-gradient(90deg, rgba(107,143,113,0.28) 0%, transparent 100%) !important;
+  }
+
+  .set-row.is-live .set-artist {
+    color: var(--sage) !important;
+  }
+
+  .live-badge {
+    display: inline-block;
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--sage);
+    color: white;
+    padding: 0.1rem 0.4rem;
+    border-radius: 2px;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+    animation: pulse-badge 1.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse-badge {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* FAVORITES */
+  .set-row {
+    grid-template-columns: 150px 1fr auto;
+  }
+
+  .fav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.2rem 0.3rem;
+    font-size: 0.85rem;
+    line-height: 1;
+    color: rgba(245,237,224,0.15);
+    transition: none;
+    flex-shrink: 0;
+  }
+
+  .fav-btn:hover {
+    color: rgba(224,58,90,0.45);
+  }
+
+  .set-row.is-faved .fav-btn {
+    color: #ff1a3d;
+  }
+
+  .set-row.is-faved .fav-btn:hover {
+    color: rgba(255,26,61,0.65);
+  }
+
+  .fav-btn:active {
+    transform: scale(0.85);
+  }
+
+  /* faved row subtle highlight */
+  .set-row.is-faved {
+    background: linear-gradient(90deg, rgba(224,58,90,0.07) 0%, transparent 100%);
+  }
+
+  .set-row.is-faved:hover {
+    background: linear-gradient(90deg, rgba(224,58,90,0.12) 0%, rgba(245,237,224,0.04) 100%);
+  }
+
+  /* FAVORITES PILL in header */
+  .fav-pill {
+    background: rgba(224,58,90,0.15);
+    border: 1px solid rgba(224,58,90,0.3);
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: #e8758a;
+    cursor: pointer;
+    transition: background 0.15s;
+    display: none;
+  }
+
+  .fav-pill.has-favs {
+    display: inline-block;
+  }
+
+  .fav-pill:hover {
+    background: rgba(224,58,90,0.25);
+  }
+
+  /* FAVORITES PANEL */
+  #fav-panel {
+    display: none;
+    background: #1a1210;
+    border-bottom: 1px solid rgba(224,58,90,0.2);
+    padding: 1rem 2rem;
+  }
+
+  #fav-panel.visible {
+    display: block;
+  }
+
+  .fav-panel-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e03a5a;
+    margin-bottom: 0.6rem;
+  }
+
+  .fav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.8rem;
+  }
+
+  .fav-tag {
+    font-size: 0.7rem;
+    color: rgba(245,237,224,0.85);
+    background: rgba(224,58,90,0.12);
+    border: 1px solid rgba(224,58,90,0.25);
+    border-radius: 2px;
+    padding: 0.2rem 0.6rem;
+    white-space: nowrap;
+  }
+
+  .fav-tag-stage {
+    font-size: 0.55rem;
+    color: rgba(245,237,224,0.4);
+    margin-right: 0.3rem;
+    text-transform: uppercase;
+  }
+  .dot-coachella { background: #c8431a; }
+  .dot-outdoor   { background: #d4a843; }
+  .dot-sahara    { background: #6b8f71; }
+  .dot-mojave    { background: #7a5ea0; }
+  .dot-gobi      { background: #3b8bbf; }
+  .dot-sonora    { background: #d4766a; }
+  .dot-yuma      { background: #4a9e8b; }
+  .dot-quasar    { background: #e0a030; }
+  .dot-dolab     { background: #c0436e; }
+
+  /* LEGEND */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    padding: 1rem;
+    border-radius: 3px;
+    background: var(--dusk);
+    margin-bottom: 1.5rem;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,237,224,0.85);
+  }
+
+  .legend-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .stream-note {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: rgba(245,237,224,0.4);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+
+  .tz-select {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 0.3rem 0.6rem;
+    border-radius: 2px;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--sand);
+    font-family: 'DM Mono', monospace;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='rgba(245,237,224,0.5)'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    padding-right: 1.4rem;
+  }
+
+  .tz-select:focus {
+    outline: 1px solid var(--gold);
+  }
+
+  .tz-select option {
+    background: #1a1410;
+    color: var(--sand);
+  }
+    background: rgba(212,168,67,0.15) !important;
+    border-color: rgba(212,168,67,0.35) !important;
+    color: var(--gold) !important;
+    letter-spacing: 0.1em;
+  }
+
+  /* NOW PLAYING BAR */
+  #now-playing-bar {
+    background: rgba(107,143,113,0.08);
+    border-bottom: 1px solid rgba(107,143,113,0.2);
+    padding: 0.6rem 2rem;
+    display: none;
+  }
+
+  #now-playing-bar.visible {
+    display: block;
+  }
+
+  .np-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.4rem;
+  }
+
+  .np-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+  }
+
+  .np-card {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--dusk);
+    border: 1px solid rgba(107,143,113,0.4);
+    border-radius: 2px;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.65rem;
+    color: var(--sand);
+    white-space: nowrap;
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .np-link-icon {
+    width: 9px;
+    height: 9px;
+    color: rgba(245,237,224,0.35);
+    flex-shrink: 0;
+    margin-left: 0.2rem;
+    transition: color 0.15s;
+  }
+
+  a.np-card:hover .np-link-icon {
+    color: rgba(245,237,224,0.8);
+  }
+
+  a.np-card:hover {
+    border-color: rgba(107,143,113,0.8);
+    background: rgba(107,143,113,0.15);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .np-card * {
+    text-decoration: none;
+  }
+
+  .np-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: pulse-badge 1.4s ease-in-out infinite;
+  }
+
+  .np-stage {
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    color: rgba(245,237,224,0.95);
+    text-transform: uppercase;
+  }
+
+  .np-artist {
+    font-weight: 400;
+    color: var(--sand);
+    letter-spacing: 0.03em;
+  }
+
+  .np-empty {
+    font-size: 0.65rem;
+    color: rgba(26,20,16,0.4);
+    font-style: italic;
+  }
+
+  /* SEARCH BAR */
+  .search-bar-wrap {
+    background: #0e0c08;
+    border-bottom: 1px solid rgba(245,237,224,0.07);
+    padding: 0.6rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .search-icon {
+    font-size: 0.75rem;
+    color: rgba(245,237,224,0.35);
+    flex-shrink: 0;
+  }
+
+  #search-input {
+    background: none;
+    border: none;
+    outline: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--sand);
+    letter-spacing: 0.05em;
+    width: 100%;
+  }
+
+  #search-input::placeholder {
+    color: rgba(245,237,224,0.25);
+  }
+
+  .search-clear {
+    background: none;
+    border: none;
+    color: rgba(245,237,224,0.35);
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 0;
+    display: none;
+  }
+
+  .search-clear.visible { display: block; }
+  .search-clear:hover { color: var(--sand); }
+
+  .search-day-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    color: rgba(245,237,224,0.3);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid rgba(245,237,224,0.05);
+    display: none;
+  }
+
+  body.is-searching .search-day-label {
+    display: block;
+  }
+
+  body.is-searching .day-header,
+  body.is-searching .stream-note {
+    display: none;
+  }
+  .set-row.search-match {
+    background: rgba(212,168,67,0.08) !important;
+  }
+
+  .set-row.search-match .set-artist {
+    color: var(--gold) !important;
+  }
+
+  .set-row.search-hidden {
+    display: none;
+  }
+
+  .stage-block.search-no-match {
+    display: none;
+  }
+
+  /* MY SCHEDULE TAB */
+  .tab-btn.my-sched-tab {
+    color: rgba(224,58,90,0.6);
+    border-top: 1px solid transparent;
+  }
+
+  .tab-btn.my-sched-tab.active {
+    background: #2a1218;
+    color: #e8758a;
+  }
+
+  #panel-mysched {
+    display: none;
+    animation: fadeIn 0.25s ease;
+  }
+
+  #panel-mysched.active {
+    display: block;
+  }
+
+  .mysched-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: rgba(245,237,224,0.3);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+
+  .mysched-day {
+    margin-bottom: 1.5rem;
+  }
+
+  .mysched-day-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    color: var(--rust);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid rgba(245,237,224,0.08);
+  }
+
+  .mysched-item {
+    display: grid;
+    grid-template-columns: 150px 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.4rem 1rem;
+    border-radius: 3px;
+    margin-bottom: 0.25rem;
+    background: #1e1a12;
+    border: 1px solid rgba(245,237,224,0.06);
+  }
+
+  .mysched-item.conflict {
+    border-color: rgba(224,58,90,0.4);
+    background: rgba(224,58,90,0.07);
+  }
+
+  .mysched-artist {
+    font-size: 0.8rem;
+    color: rgba(245,237,224,0.9);
+  }
+
+  .mysched-stage {
+    font-size: 0.55rem;
+    color: rgba(245,237,224,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-top: 0.1rem;
+  }
+
+  .mysched-remove {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(245,237,224,0.25);
+    font-size: 0.75rem;
+    line-height: 1;
+    padding: 0.2rem 0.3rem;
+    transition: color 0.15s, transform 0.15s;
+  }
+
+  .mysched-remove:hover {
+    color: #e03a5a;
+    transform: scale(1.15);
+  }
+
+  /* CONFLICT BADGE */
+  .conflict-badge {
+    display: inline-block;
+    font-size: 0.48rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(224,58,90,0.25);
+    color: #e8758a;
+    border: 1px solid rgba(224,58,90,0.4);
+    padding: 0.1rem 0.35rem;
+    border-radius: 2px;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+  }
+
+  /* conflict indicator on set-row */
+  .set-row.has-conflict .set-artist::after {
+    content: '⚠';
+    font-size: 0.6rem;
+    color: #e8758a;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 600px) {
+    /* Header */
+    header { padding: 1rem 1rem 0.75rem; }
+    h1 { font-size: clamp(2.4rem, 15vw, 4rem); }
+
+    /* Header meta — two rows:
+       Row 1: date pill
+       Row 2: clock + tz selector side by side */
+    .header-meta {
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .meta-pill {
+      font-size: 0.65rem;
+      padding: 0.25rem 0.55rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* Clock and tz selector on same row */
+    .header-meta-row2 {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .clock-pill {
+      white-space: nowrap;
+    }
+
+    .tz-select {
+      font-size: 0.65rem;
+      padding: 0.25rem 1.2rem 0.25rem 0.5rem;
+      max-width: 140px;
+    }
+
+    /* Tabs — equal width, all 4 visible */
+    .day-tabs {
+      padding: 0;
+      gap: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .tab-btn {
+      font-size: 0.82rem;
+      padding: 0.55rem 0.2rem 0.45rem;
+      white-space: nowrap;
+      text-align: center;
+      letter-spacing: 0.03em;
+    }
+
+    /* Search */
+    .search-bar-wrap { padding: 0.5rem 1rem; }
+
+    /* Now playing */
+    #now-playing-bar { padding: 0.5rem 1rem; }
+    .np-grid { gap: 0.35rem; }
+    .np-card { font-size: 0.68rem; padding: 0.2rem 0.5rem; }
+
+    /* Main content */
+    main { padding: 0.75rem 0.75rem 3rem; }
+
+    /* Legend */
+    .legend { padding: 0.75rem; gap: 0.5rem 1rem; }
+    .legend-item { font-size: 0.62rem; }
+
+    /* Day header */
+    .day-header { flex-direction: column; gap: 0.25rem; padding: 0.75rem 0 0.75rem; }
+    .day-title { font-size: 1.6rem; }
+    .day-headliners { font-size: 0.62rem; }
+
+    /* Set rows — stack time above artist */
+    .set-row {
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      padding: 0.45rem 0.75rem;
+      gap: 0.1rem 0.5rem;
+    }
+
+    .set-time {
+      grid-column: 1;
+      grid-row: 1;
+      font-size: 0.62rem;
+    }
+
+    .set-artist {
+      grid-column: 1;
+      grid-row: 2;
+      font-size: 0.88rem;
+    }
+
+    .fav-btn {
+      grid-column: 2;
+      grid-row: 1 / 3;
+      font-size: 0.85rem;
+    }
+
+    /* My Schedule items */
+    .mysched-item {
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      gap: 0.1rem 0.5rem;
+      padding: 0.45rem 0.75rem;
+    }
+
+    .mysched-time { grid-column: 1; grid-row: 1; font-size: 0.62rem; }
+    .mysched-artist { font-size: 0.85rem; }
+    .mysched-item > div:nth-child(2) { grid-column: 1; grid-row: 2; }
+    .mysched-remove { grid-column: 2; grid-row: 1 / 3; }
+
+    /* Fav panel */
+    #fav-panel { padding: 0.75rem 1rem; }
+    .fav-list { gap: 0.3rem; }
+    .fav-tag { font-size: 0.62rem; }
+
+    /* Stage headers */
+    .stage-name { font-size: 0.9rem; }
+    .stage-tag { font-size: 0.5rem; }
+    .yt-icon { font-size: 0.5rem; }
+    .search-day-label { font-size: 0.85rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-label">YouTube Livestream — Weekend 1</div>
+  <h1>COACH<span>ELLA</span><br>2026</h1>
+  <div class="header-meta">
+    <div class="header-meta-row1">
+      <div class="meta-pill">Apr 10–12 · Indio CA</div>
+      <span class="fav-pill" id="fav-pill" onclick="toggleFavPanel()">♥ <span id="fav-count">0</span> Saved</span>
+    </div>
+    <div class="header-meta-row2">
+      <div class="meta-pill clock-pill">🕐 <span id="live-clock">--:-- --</span> <span id="clock-tz-label">PDT</span></div>
+      <select class="tz-select" id="tz-select" onchange="setTimezone(this.value)">
+        <option value="America/Los_Angeles">PDT — Los Angeles</option>
+        <option value="America/Denver">MDT — Denver</option>
+        <option value="America/Chicago">CDT — Chicago</option>
+        <option value="America/New_York">EDT — New York</option>
+        <option value="America/Sao_Paulo">BRT — São Paulo</option>
+        <option value="Europe/London">BST — London</option>
+        <option value="Europe/Paris">CEST — Paris</option>
+        <option value="Europe/Berlin">CEST — Berlin</option>
+        <option value="Asia/Dubai">GST — Dubai</option>
+        <option value="Asia/Tokyo">JST — Tokyo</option>
+        <option value="Asia/Seoul">KST — Seoul</option>
+        <option value="Australia/Sydney">AEST — Sydney</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<div class="day-tabs">
+  <button class="tab-btn active" onclick="switchDay('fri')">Fri Apr 10</button>
+  <button class="tab-btn" onclick="switchDay('sat')">Sat Apr 11</button>
+  <button class="tab-btn" onclick="switchDay('sun')">Sun Apr 12</button>
+  <button class="tab-btn my-sched-tab" onclick="switchDay('mysched')">♥ My Sched</button>
+</div>
+
+<div class="search-bar-wrap">
+  <span class="search-icon">🔍</span>
+  <input id="search-input" type="text" placeholder="Search artists..." oninput="handleSearch(this.value)" autocomplete="off" autocorrect="off" spellcheck="false">
+  <button class="search-clear" id="search-clear" onclick="clearSearch()">✕</button>
+</div>
+
+<div id="now-playing-bar">
+  <div class="np-label">▶ Now Playing</div>
+  <div class="np-grid" id="np-grid">
+    <div class="np-empty">Nothing streaming yet — check back at 4:00 PM PDT</div>
+  </div>
+</div>
+
+<div id="fav-panel">
+  <div class="fav-panel-label">♥ Saved to watch</div>
+  <div class="fav-list" id="fav-list"></div>
+</div>
+
+<main>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot dot-coachella"></div>Coachella Stage</div>
+    <div class="legend-item"><div class="legend-dot dot-outdoor"></div>Outdoor Theatre</div>
+    <div class="legend-item"><div class="legend-dot dot-sahara"></div>Sahara</div>
+    <div class="legend-item"><div class="legend-dot dot-mojave"></div>Mojave</div>
+    <div class="legend-item"><div class="legend-dot dot-gobi"></div>Gobi</div>
+    <div class="legend-item"><div class="legend-dot dot-sonora"></div>Sonora</div>
+    <div class="legend-item"><div class="legend-dot dot-yuma"></div>Yuma</div>
+    <div class="legend-item"><div class="legend-dot dot-quasar"></div>Quasar</div>
+  </div>
+
+  <!-- FRIDAY -->
+  <div class="day-panel active" id="panel-fri">
+    <div class="search-day-label">Friday · Apr 10</div>
+    <div class="day-header">
+      <div class="day-title">Friday, April 10</div>
+      <div class="day-headliners">Headliner: Sabrina Carpenter · Anyma (midnight)</div>
+    </div>
+    <div class="stream-note" style="margin-bottom:1rem;">Stream begins 4:00 PM PDT</div>
+    <div class="stages-grid">
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-coachella"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/2NA7XUw51oo?si=B4zr5gaiVjKINcSf" target="_blank" rel="noopener">Coachella Stage</a>
+          <span class="stage-tag">Main · 4K</span><a class="yt-icon" href="https://www.youtube.com/live/2NA7XUw51oo?si=B4zr5gaiVjKINcSf" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">4:15 – 5:20 PM</div><div class="set-artist">Record Safari</div></div>
+          <div class="set-row"><div class="set-time">5:30 – 6:20 PM</div><div class="set-artist">Teddy Swims</div></div>
+          <div class="set-row"><div class="set-time">7:00 – 7:55 PM</div><div class="set-artist">The xx</div></div>
+          <div class="set-row headliner"><div class="set-time">9:05 – 10:35 PM</div><div class="set-artist">Sabrina Carpenter <span class="headliner-badge">Headliner</span></div></div>
+          <div class="set-row headliner"><div class="set-time">Midnight – 1:00 AM</div><div class="set-artist">Anyma presents ÆDEN <span class="headliner-badge">Closer</span></div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-outdoor"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/MdUBm8G41ZU?si=sA-qtiTI6VyJEpq5" target="_blank" rel="noopener">Outdoor Theatre</a>
+          <span class="stage-tag">4K</span><a class="yt-icon" href="https://www.youtube.com/live/MdUBm8G41ZU?si=sA-qtiTI6VyJEpq5" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">2:50 – 3:50 PM</div><div class="set-artist">Tiffany Tyson</div></div>
+          <div class="set-row"><div class="set-time">4:00 – 4:50 PM</div><div class="set-artist">Dabeull</div></div>
+          <div class="set-row"><div class="set-time">5:20 – 6:10 PM</div><div class="set-artist">Lykke Li</div></div>
+          <div class="set-row"><div class="set-time">6:40 – 7:30 PM</div><div class="set-artist">Dijon</div></div>
+          <div class="set-row"><div class="set-time">8:05 – 9:00 PM</div><div class="set-artist">Turnstile</div></div>
+          <div class="set-row"><div class="set-time">10:35 – 11:50 PM</div><div class="set-artist">Disclosure</div></div>
+          <div class="set-row"><div class="set-time">11:55 PM+</div><div class="set-artist">Bonus Set from Do LaB</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-sahara"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/NlrpPqb0vwo?si=05RAM2ixSvBYiRtI" target="_blank" rel="noopener">Sahara</a>
+          <span class="stage-tag">4K</span><a class="yt-icon" href="https://www.youtube.com/live/NlrpPqb0vwo?si=05RAM2ixSvBYiRtI" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">2:30 – 3:35 PM</div><div class="set-artist">Massio</div></div>
+          <div class="set-row"><div class="set-time">3:45 – 4:35 PM</div><div class="set-artist">Youna</div></div>
+          <div class="set-row"><div class="set-time">4:50 – 5:50 PM</div><div class="set-artist">HUGEL</div></div>
+          <div class="set-row"><div class="set-time">6:15 – 7:15 PM</div><div class="set-artist">Marlon Hoffstadt</div></div>
+          <div class="set-row"><div class="set-time">8:00 – 8:45 PM</div><div class="set-artist">KATSEYE</div></div>
+          <div class="set-row"><div class="set-time">9:15 – 10:20 PM</div><div class="set-artist">Levity</div></div>
+          <div class="set-row"><div class="set-time">10:50 – 11:40 PM</div><div class="set-artist">Swae Lee</div></div>
+          <div class="set-row"><div class="set-time">12:05 – 12:55 AM</div><div class="set-artist">Sexyy Red</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-mojave"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/HJVG2Ck3uuk?si=erfVlIkcz9snsYMA" target="_blank" rel="noopener">Mojave</a>
+          <a class="yt-icon" href="https://www.youtube.com/live/HJVG2Ck3uuk?si=erfVlIkcz9snsYMA" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">2:00 – 2:50 PM</div><div class="set-artist">Novasoul</div></div>
+          <div class="set-row"><div class="set-time">3:00 – 3:45 PM</div><div class="set-artist">Slayyyter</div></div>
+          <div class="set-row"><div class="set-time">4:15 – 5:00 PM</div><div class="set-artist">BINI</div></div>
+          <div class="set-row"><div class="set-time">5:30 – 6:15 PM</div><div class="set-artist">Central Cee</div></div>
+          <div class="set-row"><div class="set-time">6:45 – 7:40 PM</div><div class="set-artist">Devo</div></div>
+          <div class="set-row"><div class="set-time">8:10 – 9:00 PM</div><div class="set-artist">Moby</div></div>
+          <div class="set-row"><div class="set-time">10:35 – 11:25 PM</div><div class="set-artist">Ethel Cain</div></div>
+          <div class="set-row"><div class="set-time">11:55 PM – 12:45 AM</div><div class="set-artist">Blood Orange</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-gobi"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/4C5p1tdRv6c?si=6HUtiO_T_MmUVHnF" target="_blank" rel="noopener">Gobi</a>
+          <a class="yt-icon" href="https://www.youtube.com/live/4C5p1tdRv6c?si=6HUtiO_T_MmUVHnF" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">2:15 – 2:45 PM</div><div class="set-artist">Cahuilla Bird Singers and Dancers</div></div>
+          <div class="set-row"><div class="set-time">2:55 – 3:35 PM</div><div class="set-artist">Bob Baker Marionettes</div></div>
+          <div class="set-row"><div class="set-time">4:00 – 4:40 PM</div><div class="set-artist">NewDad</div></div>
+          <div class="set-row"><div class="set-time">5:10 – 5:50 PM</div><div class="set-artist">Joyce Manor</div></div>
+          <div class="set-row"><div class="set-time">6:15 – 6:55 PM</div><div class="set-artist">CMAT</div></div>
+          <div class="set-row"><div class="set-time">7:20 – 8:00 PM</div><div class="set-artist">fakemink</div></div>
+          <div class="set-row"><div class="set-time">8:25 – 9:10 PM</div><div class="set-artist">Holly Humberstone</div></div>
+          <div class="set-row"><div class="set-time">9:50 – 10:35 PM</div><div class="set-artist">Joost</div></div>
+          <div class="set-row"><div class="set-time">11:05 – 11:55 PM</div><div class="set-artist">Creepy Nuts</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-sonora"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/OGNPnQViI3g?si=P1MmTmKiRMmXJiYj" target="_blank" rel="noopener">Sonora</a>
+          <a class="yt-icon" href="https://www.youtube.com/live/OGNPnQViI3g?si=P1MmTmKiRMmXJiYj" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">1:00 – 1:40 PM</div><div class="set-artist">Doom Dave</div></div>
+          <div class="set-row"><div class="set-time">1:40 – 2:10 PM</div><div class="set-artist">Febuary</div></div>
+          <div class="set-row"><div class="set-time">2:35 – 3:15 PM</div><div class="set-artist">Carolina Durante</div></div>
+          <div class="set-row"><div class="set-time">3:40 – 4:20 PM</div><div class="set-artist">Wednesday</div></div>
+          <div class="set-row"><div class="set-time">4:50 – 5:30 PM</div><div class="set-artist">Freshwater</div></div>
+          <div class="set-row"><div class="set-time">6:00 – 6:40 PM</div><div class="set-artist">The Two Lips</div></div>
+          <div class="set-row"><div class="set-time">7:10 – 8:00 PM</div><div class="set-artist">Ninajirachi</div></div>
+          <div class="set-row"><div class="set-time">8:25 – 9:05 PM</div><div class="set-artist">Cachirula & Loojan</div></div>
+          <div class="set-row"><div class="set-time">10:00 – 10:45 PM</div><div class="set-artist">Hot Mulligan</div></div>
+          <div class="set-row"><div class="set-time">11:50 PM – 12:50 AM</div><div class="set-artist">Not For Radio</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-yuma"></div>
+          <a class="stage-name" href="https://www.youtube.com/@coachella/streams" target="_blank" rel="noopener">Yuma</a>
+          <a class="yt-icon" href="https://www.youtube.com/@coachella/streams" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">1:00 – 1:45 PM</div><div class="set-artist">Sahar Z</div></div>
+          <div class="set-row"><div class="set-time">1:45 – 2:45 PM</div><div class="set-artist">Jessica Brankka</div></div>
+          <div class="set-row"><div class="set-time">2:45 – 3:45 PM</div><div class="set-artist">Arodes</div></div>
+          <div class="set-row"><div class="set-time">3:45 – 4:45 PM</div><div class="set-artist">Groove Armada</div></div>
+          <div class="set-row"><div class="set-time">4:45 – 6:00 PM</div><div class="set-artist">Rossi. x Chloé Caillet</div></div>
+          <div class="set-row"><div class="set-time">6:00 – 7:15 PM</div><div class="set-artist">Kettama</div></div>
+          <div class="set-row"><div class="set-time">7:15 – 8:30 PM</div><div class="set-artist">Prospa</div></div>
+          <div class="set-row"><div class="set-time">8:30 – 9:45 PM</div><div class="set-artist">Max Dean x Luke Dean</div></div>
+          <div class="set-row"><div class="set-time">9:45 – 11:15 PM</div><div class="set-artist">Max Styler</div></div>
+          <div class="set-row"><div class="set-time">11:15 PM – 12:55 AM</div><div class="set-artist">Gordo</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-quasar"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/1KANGsDaRvw?si=AUNIfoyGA1pS1Y6e" target="_blank" rel="noopener">Quasar</a>
+          <span class="stage-tag">Horiz + Vert</span><a class="yt-icon" href="https://www.youtube.com/live/1KANGsDaRvw?si=AUNIfoyGA1pS1Y6e" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">5:00 – 7:00 PM</div><div class="set-artist">Tiga</div></div>
+          <div class="set-row"><div class="set-time">7:00 – 9:00 PM</div><div class="set-artist">Deep Dish</div></div>
+          <div class="set-row"><div class="set-time">9:00 – 11:00 PM</div><div class="set-artist">PAWSA</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-dolab"></div>
+          <span class="stage-name">Do LaB</span>
+          <span class="stage-tag">In Person Only</span>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">1:00 – 2:00 PM</div><div class="set-artist">Soraya</div></div>
+          <div class="set-row"><div class="set-time">2:00 – 3:00 PM</div><div class="set-artist">Fifi</div></div>
+          <div class="set-row"><div class="set-time">3:00 – 4:00 PM</div><div class="set-artist">1tbsp</div></div>
+          <div class="set-row"><div class="set-time">4:00 – 5:00 PM</div><div class="set-artist">Bullet Tooth</div></div>
+          <div class="set-row"><div class="set-time">5:00 – 6:00 PM</div><div class="set-artist">MCR-T</div></div>
+          <div class="set-row"><div class="set-time">6:00 – 7:05 PM</div><div class="set-artist">Jazzy</div></div>
+          <div class="set-row"><div class="set-time">7:05 – 8:05 PM</div><div class="set-artist">Effin</div></div>
+          <div class="set-row"><div class="set-time">8:10 – 9:10 PM</div><div class="set-artist">Surprise</div></div>
+          <div class="set-row"><div class="set-time">9:15 – 10:30 PM</div><div class="set-artist">Jigitz</div></div>
+          <div class="set-row"><div class="set-time">10:30 – 11:45 PM</div><div class="set-artist">Andy C</div></div>
+          <div class="set-row"><div class="set-time">11:45 PM – 1:00 AM</div><div class="set-artist">Surprise</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SATURDAY -->
+  <div class="day-panel" id="panel-sat">
+    <div class="search-day-label">Saturday · Apr 11</div>
+    <div class="day-header">
+      <div class="day-title">Saturday, April 11</div>
+      <div class="day-headliners">Headliner: Justin Bieber · Also: Jack White, The Strokes</div>
+    </div>
+    <div class="stream-note" style="margin-bottom:1rem;">Stream begins 4:00 PM PDT · Jack White's 3pm set delayed to 4pm on stream</div>
+    <div class="stages-grid">
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-coachella"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/2NA7XUw51oo?si=B4zr5gaiVjKINcSf" target="_blank" rel="noopener">Coachella Stage</a>
+          <span class="stage-tag">Main · 4K</span><a class="yt-icon" href="https://www.youtube.com/live/2NA7XUw51oo?si=B4zr5gaiVjKINcSf" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">4:15 – 5:20 PM</div><div class="set-artist">Jaqck Glam</div></div>
+          <div class="set-row"><div class="set-time">5:30 – 6:20 PM</div><div class="set-artist">Addison Rae</div></div>
+          <div class="set-row"><div class="set-time">7:00 – 7:50 PM</div><div class="set-artist">GIVĒON</div></div>
+          <div class="set-row"><div class="set-time">9:00 – 10:10 PM</div><div class="set-artist">The Strokes</div></div>
+          <div class="set-row headliner"><div class="set-time">11:25 PM – 12:55 AM</div><div class="set-artist">Justin Bieber <span class="headliner-badge">Headliner</span></div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-outdoor"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/MdUBm8G41ZU?si=sA-qtiTI6VyJEpq5" target="_blank" rel="noopener">Outdoor Theatre</a>
+          <span class="stage-tag">4K</span><a class="yt-icon" href="https://www.youtube.com/live/MdUBm8G41ZU?si=sA-qtiTI6VyJEpq5" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">2:40 – 3:25 PM</div><div class="set-artist">Blondshell</div></div>
+          <div class="set-row"><div class="set-time">3:55 – 4:45 PM</div><div class="set-artist">Los Hermanos Flores</div></div>
+          <div class="set-row"><div class="set-time">5:10 – 6:00 PM</div><div class="set-artist">Alex G</div></div>
+          <div class="set-row"><div class="set-time">7:05 – 7:55 PM</div><div class="set-artist">SOMBR</div></div>
+          <div class="set-row"><div class="set-time">8:30 – 9:25 PM</div><div class="set-artist">Labrinth</div></div>
+          <div class="set-row"><div class="set-time">10:20 – 11:20 PM</div><div class="set-artist">David Byrne</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-sahara"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/NlrpPqb0vwo?si=05RAM2ixSvBYiRtI" target="_blank" rel="noopener">Sahara</a>
+          <span class="stage-tag">4K</span><a class="yt-icon" href="https://www.youtube.com/live/NlrpPqb0vwo?si=05RAM2ixSvBYiRtI" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">2:00 – 2:45 PM</div><div class="set-artist">Seek-One</div></div>
+          <div class="set-row"><div class="set-time">2:50 – 3:50 PM</div><div class="set-artist">TEED</div></div>
+          <div class="set-row"><div class="set-time">4:00 – 4:50 PM</div><div class="set-artist">ZULAN</div></div>
+          <div class="set-row"><div class="set-time">5:00 – 5:55 PM</div><div class="set-artist">Hamdi</div></div>
+          <div class="set-row"><div class="set-time">6:15 – 7:10 PM</div><div class="set-artist">¥USUK€ ¥UK1MATSU</div></div>
+          <div class="set-row"><div class="set-time">8:00 – 8:45 PM</div><div class="set-artist">Nine Inch Noize</div></div>
+          <div class="set-row"><div class="set-time">9:10 – 10:05 PM</div><div class="set-artist">REZZ</div></div>
+          <div class="set-row"><div class="set-time">10:30 – 11:25 PM</div><div class="set-artist">Adriatique</div></div>
+          <div class="set-row"><div class="set-time">11:55 PM – 12:55 AM</div><div class="set-artist">Worship</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-mojave"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/HJVG2Ck3uuk?si=erfVlIkcz9snsYMA" target="_blank" rel="noopener">Mojave</a>
+          <a class="yt-icon" href="https://www.youtube.com/live/HJVG2Ck3uuk?si=erfVlIkcz9snsYMA" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">3:00 – 3:45 PM</div><div class="set-artist">Jack White</div></div>
+          <div class="set-row"><div class="set-time">4:30 – 5:20 PM</div><div class="set-artist">Fujii Kaze</div></div>
+          <div class="set-row"><div class="set-time">5:50 – 6:35 PM</div><div class="set-artist">Royel Otis</div></div>
+          <div class="set-row"><div class="set-time">7:30 – 8:20 PM</div><div class="set-artist">Taemin</div></div>
+          <div class="set-row"><div class="set-time">8:55 – 9:45 PM</div><div class="set-artist">PinkPantheress</div></div>
+          <div class="set-row"><div class="set-time">10:15 – 11:15 PM</div><div class="set-artist">Interpol</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-gobi"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/4C5p1tdRv6c?si=6HUtiO_T_MmUVHnF" target="_blank" rel="noopener">Gobi</a>
+          <a class="yt-icon" href="https://www.youtube.com/live/4C5p1tdRv6c?si=6HUtiO_T_MmUVHnF" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">2:05 – 2:50 PM</div><div class="set-artist">Noga Erez</div></div>
+          <div class="set-row"><div class="set-time">4:05 – 4:45 PM</div><div class="set-artist">WHATMORE</div></div>
+          <div class="set-row"><div class="set-time">5:10 – 5:50 PM</div><div class="set-artist">Luísa Sonza</div></div>
+          <div class="set-row"><div class="set-time">6:15 – 7:00 PM</div><div class="set-artist">Geese</div></div>
+          <div class="set-row"><div class="set-time">7:50 – 8:35 PM</div><div class="set-artist">Davido</div></div>
+          <div class="set-row"><div class="set-time">9:00 – 9:45 PM</div><div class="set-artist">BIA</div></div>
+          <div class="set-row"><div class="set-time">10:10 – 11:00 PM</div><div class="set-artist">Morat</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-sonora"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/OGNPnQViI3g?si=P1MmTmKiRMmXJiYj" target="_blank" rel="noopener">Sonora</a>
+          <a class="yt-icon" href="https://www.youtube.com/live/OGNPnQViI3g?si=P1MmTmKiRMmXJiYj" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">1:00 – 2:00 PM</div><div class="set-artist">Triste Juventud</div></div>
+          <div class="set-row"><div class="set-time">2:00 – 2:40 PM</div><div class="set-artist">Die Spitz</div></div>
+          <div class="set-row"><div class="set-time">3:10 – 3:50 PM</div><div class="set-artist">Freak Slug</div></div>
+          <div class="set-row"><div class="set-time">4:20 – 5:00 PM</div><div class="set-artist">Ecca Vandal</div></div>
+          <div class="set-row"><div class="set-time">5:30 – 6:10 PM</div><div class="set-artist">Ceremony</div></div>
+          <div class="set-row"><div class="set-time">6:40 – 7:20 PM</div><div class="set-artist">rusowsky</div></div>
+          <div class="set-row"><div class="set-time">7:50 – 8:30 PM</div><div class="set-artist">54 Ultra</div></div>
+          <div class="set-row"><div class="set-time">9:45 – 10:35 PM</div><div class="set-artist">Mind Enterprises</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-yuma"></div>
+          <a class="stage-name" href="https://www.youtube.com/@coachella/streams" target="_blank" rel="noopener">Yuma</a>
+          <a class="yt-icon" href="https://www.youtube.com/@coachella/streams" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">1:00 – 2:00 PM</div><div class="set-artist">Yamagucci</div></div>
+          <div class="set-row"><div class="set-time">2:00 – 3:00 PM</div><div class="set-artist">GENESI</div></div>
+          <div class="set-row"><div class="set-time">3:00 – 4:15 PM</div><div class="set-artist">Riordan</div></div>
+          <div class="set-row"><div class="set-time">4:15 – 5:30 PM</div><div class="set-artist">Mahmut Orhan</div></div>
+          <div class="set-row"><div class="set-time">5:30 – 6:45 PM</div><div class="set-artist">Ben Sterling</div></div>
+          <div class="set-row"><div class="set-time">6:45 – 8:15 PM</div><div class="set-artist">SOSA</div></div>
+          <div class="set-row"><div class="set-time">8:15 – 9:45 PM</div><div class="set-artist">Bedouin</div></div>
+          <div class="set-row"><div class="set-time">9:45 – 11:00 PM</div><div class="set-artist">Boys Noize</div></div>
+          <div class="set-row"><div class="set-time">11:00 PM – 12:55 AM</div><div class="set-artist">Armin van Buuren x Adam Beyer</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-quasar"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/1KANGsDaRvw?si=AUNIfoyGA1pS1Y6e" target="_blank" rel="noopener">Quasar</a>
+          <span class="stage-tag">Horiz + Vert</span><a class="yt-icon" href="https://www.youtube.com/live/1KANGsDaRvw?si=AUNIfoyGA1pS1Y6e" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">5:00 – 7:00 PM</div><div class="set-artist">Joezi</div></div>
+          <div class="set-row"><div class="set-time">7:00 – 9:00 PM</div><div class="set-artist">Afrojack x Shimza</div></div>
+          <div class="set-row"><div class="set-time">9:00 – 11:00 PM</div><div class="set-artist">David Guetta</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-dolab"></div>
+          <span class="stage-name">Do LaB</span>
+          <span class="stage-tag">In Person Only</span>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">1:00 – 2:05 PM</div><div class="set-artist">Lumia</div></div>
+          <div class="set-row"><div class="set-time">2:05 – 3:10 PM</div><div class="set-artist">Baalti</div></div>
+          <div class="set-row"><div class="set-time">3:10 – 4:15 PM</div><div class="set-artist">Roddy Lima</div></div>
+          <div class="set-row"><div class="set-time">4:15 – 5:20 PM</div><div class="set-artist">Baby J</div></div>
+          <div class="set-row"><div class="set-time">5:20 – 6:25 PM</div><div class="set-artist">Starjunk 95</div></div>
+          <div class="set-row"><div class="set-time">6:25 – 7:30 PM</div><div class="set-artist">Tinashe</div></div>
+          <div class="set-row"><div class="set-time">7:30 – 8:35 PM</div><div class="set-artist">Surprise</div></div>
+          <div class="set-row"><div class="set-time">8:35 – 9:40 PM</div><div class="set-artist">andhim</div></div>
+          <div class="set-row"><div class="set-time">9:40 – 10:40 PM</div><div class="set-artist">Anfisa Letyago</div></div>
+          <div class="set-row"><div class="set-time">10:40 – 11:50 PM</div><div class="set-artist">Surprise</div></div>
+          <div class="set-row"><div class="set-time">11:50 PM – 1:00 AM</div><div class="set-artist">Surprise</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUNDAY -->
+  <div class="day-panel" id="panel-sun">
+    <div class="search-day-label">Sunday · Apr 12</div>
+    <div class="day-header">
+      <div class="day-title">Sunday, April 12</div>
+      <div class="day-headliners">Headliner: KAROL G · Also: Iggy Pop, FKA twigs, BIGBANG, Laufey</div>
+    </div>
+    <div class="stream-note" style="margin-bottom:1rem;">Stream begins 4:00 PM PDT</div>
+    <div class="stages-grid">
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-coachella"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/2NA7XUw51oo?si=B4zr5gaiVjKINcSf" target="_blank" rel="noopener">Coachella Stage</a>
+          <span class="stage-tag">Main · 4K</span><a class="yt-icon" href="https://www.youtube.com/live/2NA7XUw51oo?si=B4zr5gaiVjKINcSf" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">2:45 – 3:30 PM</div><div class="set-artist">Gabe Real</div></div>
+          <div class="set-row"><div class="set-time">3:40 – 4:15 PM</div><div class="set-artist">Tijuana Panthers</div></div>
+          <div class="set-row"><div class="set-time">4:45 – 5:30 PM</div><div class="set-artist">Wet Leg</div></div>
+          <div class="set-row"><div class="set-time">6:10 – 7:10 PM</div><div class="set-artist">Major Lazer</div></div>
+          <div class="set-row"><div class="set-time">7:50 – 8:40 PM</div><div class="set-artist">Young Thug</div></div>
+          <div class="set-row headliner"><div class="set-time">9:55 PM – close</div><div class="set-artist">KAROL G <span class="headliner-badge">Headliner</span></div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-outdoor"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/MdUBm8G41ZU?si=sA-qtiTI6VyJEpq5" target="_blank" rel="noopener">Outdoor Theatre</a>
+          <span class="stage-tag">4K</span><a class="yt-icon" href="https://www.youtube.com/live/MdUBm8G41ZU?si=sA-qtiTI6VyJEpq5" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">3:00 – 3:50 PM</div><div class="set-artist">Juicewon</div></div>
+          <div class="set-row"><div class="set-time">4:00 – 4:45 PM</div><div class="set-artist">Gigi Perez</div></div>
+          <div class="set-row"><div class="set-time">5:15 – 6:10 PM</div><div class="set-artist">CLIPSE</div></div>
+          <div class="set-row"><div class="set-time">6:45 – 7:40 PM</div><div class="set-artist">Foster the People</div></div>
+          <div class="set-row"><div class="set-time">8:40 – 9:40 PM</div><div class="set-artist">Laufey</div></div>
+          <div class="set-row"><div class="set-time">10:30 – 11:30 PM</div><div class="set-artist">BIGBANG</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-sahara"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/NlrpPqb0vwo?si=05RAM2ixSvBYiRtI" target="_blank" rel="noopener">Sahara</a>
+          <span class="stage-tag">4K</span><a class="yt-icon" href="https://www.youtube.com/live/NlrpPqb0vwo?si=05RAM2ixSvBYiRtI" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">2:30 – 3:30 PM</div><div class="set-artist">LOBOMAN</div></div>
+          <div class="set-row"><div class="set-time">3:35 – 4:35 PM</div><div class="set-artist">Girl Math (VNSSA x NALA)</div></div>
+          <div class="set-row"><div class="set-time">4:45 – 5:45 PM</div><div class="set-artist">BUNT.</div></div>
+          <div class="set-row"><div class="set-time">6:10 – 7:10 PM</div><div class="set-artist">Duke Dumont</div></div>
+          <div class="set-row"><div class="set-time">7:25 – 8:25 PM</div><div class="set-artist">Mochakk</div></div>
+          <div class="set-row"><div class="set-time">9:05 – 10:05 PM</div><div class="set-artist">Subtronics</div></div>
+          <div class="set-row"><div class="set-time">10:45 – 11:55 PM</div><div class="set-artist">Kaskade</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-mojave"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/HJVG2Ck3uuk?si=erfVlIkcz9snsYMA" target="_blank" rel="noopener">Mojave</a>
+          <a class="yt-icon" href="https://www.youtube.com/live/HJVG2Ck3uuk?si=erfVlIkcz9snsYMA" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">2:30 – 3:10 PM</div><div class="set-artist">wyldeflower</div></div>
+          <div class="set-row"><div class="set-time">3:15 – 3:55 PM</div><div class="set-artist">Samia</div></div>
+          <div class="set-row"><div class="set-time">4:25 – 5:10 PM</div><div class="set-artist">Little Simz</div></div>
+          <div class="set-row"><div class="set-time">5:35 – 6:25 PM</div><div class="set-artist">Suicidal Tendencies</div></div>
+          <div class="set-row"><div class="set-time">7:10 – 8:10 PM</div><div class="set-artist">Iggy Pop</div></div>
+          <div class="set-row"><div class="set-time">8:45 – 10:00 PM</div><div class="set-artist">FKA twigs</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-gobi"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/4C5p1tdRv6c?si=6HUtiO_T_MmUVHnF" target="_blank" rel="noopener">Gobi</a>
+          <a class="yt-icon" href="https://www.youtube.com/live/4C5p1tdRv6c?si=6HUtiO_T_MmUVHnF" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">2:05 – 2:35 PM</div><div class="set-artist">flowervlovlove</div></div>
+          <div class="set-row"><div class="set-time">3:00 – 3:40 PM</div><div class="set-artist">The Chats</div></div>
+          <div class="set-row"><div class="set-time">4:05 – 4:50 PM</div><div class="set-artist">COBRAH</div></div>
+          <div class="set-row"><div class="set-time">5:15 – 6:00 PM</div><div class="set-artist">Oklou</div></div>
+          <div class="set-row"><div class="set-time">6:30 – 7:05 PM</div><div class="set-artist">Black Flag</div></div>
+          <div class="set-row"><div class="set-time">7:45 – 8:35 PM</div><div class="set-artist">TOMORA</div></div>
+          <div class="set-row"><div class="set-time">9:05 – 9:55 PM</div><div class="set-artist">The Rapture</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-sonora"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/OGNPnQViI3g?si=P1MmTmKiRMmXJiYj" target="_blank" rel="noopener">Sonora</a>
+          <a class="yt-icon" href="https://www.youtube.com/live/OGNPnQViI3g?si=P1MmTmKiRMmXJiYj" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">1:00 – 2:00 PM</div><div class="set-artist">Panda & Chok</div></div>
+          <div class="set-row"><div class="set-time">2:00 – 2:40 PM</div><div class="set-artist">Glitterer</div></div>
+          <div class="set-row"><div class="set-time">3:10 – 3:50 PM</div><div class="set-artist">Model/Actriz</div></div>
+          <div class="set-row"><div class="set-time">4:20 – 5:00 PM</div><div class="set-artist">Jane Remover</div></div>
+          <div class="set-row"><div class="set-time">5:30 – 6:10 PM</div><div class="set-artist">Los Retros</div></div>
+          <div class="set-row"><div class="set-time">6:40 – 7:30 PM</div><div class="set-artist">RØZ</div></div>
+          <div class="set-row"><div class="set-time">8:00 – 8:40 PM</div><div class="set-artist">DRAIN</div></div>
+          <div class="set-row"><div class="set-time">9:10 – 10:00 PM</div><div class="set-artist">French Police</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-yuma"></div>
+          <a class="stage-name" href="https://www.youtube.com/@coachella/streams" target="_blank" rel="noopener">Yuma</a>
+          <a class="yt-icon" href="https://www.youtube.com/@coachella/streams" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">1:00 – 2:00 PM</div><div class="set-artist">LE YORA</div></div>
+          <div class="set-row"><div class="set-time">2:00 – 3:00 PM</div><div class="set-artist">AZZECCA</div></div>
+          <div class="set-row"><div class="set-time">3:00 – 4:15 PM</div><div class="set-artist">&friends</div></div>
+          <div class="set-row"><div class="set-time">4:15 – 5:30 PM</div><div class="set-artist">MËSTIZA</div></div>
+          <div class="set-row"><div class="set-time">5:30 – 7:00 PM</div><div class="set-artist">Carlita x Josh Baker</div></div>
+          <div class="set-row"><div class="set-time">7:00 – 8:30 PM</div><div class="set-artist">Röyksopp</div></div>
+          <div class="set-row"><div class="set-time">8:30 – 10:00 PM</div><div class="set-artist">WhoMadeWho</div></div>
+          <div class="set-row"><div class="set-time">10:00 – 11:55 PM</div><div class="set-artist">Green Velvet x AYYBO</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-quasar"></div>
+          <a class="stage-name" href="https://www.youtube.com/live/1KANGsDaRvw?si=AUNIfoyGA1pS1Y6e" target="_blank" rel="noopener">Quasar</a>
+          <span class="stage-tag">Horiz + Vert</span><a class="yt-icon" href="https://www.youtube.com/live/1KANGsDaRvw?si=AUNIfoyGA1pS1Y6e" target="_blank" rel="noopener" title="Watch on YouTube"><svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 2.5s-.3-1.8-1.1-2.6C21.4-.2 20.2-.2 19.6-.3 16.4-.5 12 -.5 12-.5s-4.4 0-7.6.2C3.8-.2 2.6-.2 1.6.0.8.8.5 2.5.5 2.5S.2 4.5.2 6.6v1.9c0 2 .3 4 .3 4s.3 1.8 1.1 2.6c1 1 2.4.9 3 1C6.8 16.4 12 16.5 12 16.5s4.4 0 7.6-.3c.7-.1 1.8-.1 2.8-1.1.8-.8 1.1-2.6 1.1-2.6s.3-2 .3-4V6.6c0-2-.3-4-.3-4zM9.7 11.5V4.8l7.6 3.4-7.6 3.3z"/></svg>Watch</a>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">4:00 – 6:00 PM</div><div class="set-artist">Jazzy</div></div>
+          <div class="set-row"><div class="set-time">6:00 – 8:00 PM</div><div class="set-artist">JOY (Anonymous)</div></div>
+          <div class="set-row"><div class="set-time">8:00 – 10:00 PM</div><div class="set-artist">Fatboy Slim</div></div>
+        </div>
+      </div>
+
+      <div class="stage-block">
+        <div class="stage-header">
+          <div class="stage-dot dot-dolab"></div>
+          <span class="stage-name">Do LaB</span>
+          <span class="stage-tag">In Person Only</span>
+        </div>
+        <div class="sets-list">
+          <div class="set-row"><div class="set-time">1:00 – 2:00 PM</div><div class="set-artist">Soul Purpose</div></div>
+          <div class="set-row"><div class="set-time">2:00 – 3:00 PM</div><div class="set-artist">Cincity</div></div>
+          <div class="set-row"><div class="set-time">3:00 – 4:00 PM</div><div class="set-artist">Jackie Hollander</div></div>
+          <div class="set-row"><div class="set-time">4:00 – 5:00 PM</div><div class="set-artist">Brunello</div></div>
+          <div class="set-row"><div class="set-time">5:00 – 6:00 PM</div><div class="set-artist">Poolside's Daytime Disco</div></div>
+          <div class="set-row"><div class="set-time">6:00 – 6:40 PM</div><div class="set-artist">Surprise</div></div>
+          <div class="set-row"><div class="set-time">6:40 – 7:40 PM</div><div class="set-artist">Deer Jade</div></div>
+          <div class="set-row"><div class="set-time">7:40 – 8:45 PM</div><div class="set-artist">OMAR+</div></div>
+          <div class="set-row"><div class="set-time">8:45 – 9:45 PM</div><div class="set-artist">OMNOM</div></div>
+          <div class="set-row"><div class="set-time">9:45 – 10:45 PM</div><div class="set-artist">Whethan</div></div>
+          <div class="set-row"><div class="set-time">10:45 PM – midnight</div><div class="set-artist">Surprise</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MY SCHEDULE -->
+  <div class="day-panel" id="panel-mysched">
+    <div class="day-header">
+      <div class="day-title">My Schedule</div>
+      <div class="day-headliners">Your saved artists · sorted by time</div>
+    </div>
+    <div id="mysched-content">
+      <div class="mysched-empty">No artists saved yet — tap ♥ on any set to add it here</div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  // Stage metadata for Now Playing cards
+  const STAGE_META = {
+    0: { name: 'Coachella Stage', dot: 'dot-coachella', url: 'https://www.youtube.com/live/2NA7XUw51oo?si=B4zr5gaiVjKINcSf' },
+    1: { name: 'Outdoor Theatre', dot: 'dot-outdoor',   url: 'https://www.youtube.com/live/MdUBm8G41ZU?si=sA-qtiTI6VyJEpq5' },
+    2: { name: 'Sahara',          dot: 'dot-sahara',    url: 'https://www.youtube.com/live/NlrpPqb0vwo?si=05RAM2ixSvBYiRtI' },
+    3: { name: 'Mojave',          dot: 'dot-mojave',    url: 'https://www.youtube.com/live/HJVG2Ck3uuk?si=erfVlIkcz9snsYMA' },
+    4: { name: 'Gobi',            dot: 'dot-gobi',      url: 'https://www.youtube.com/live/4C5p1tdRv6c?si=6HUtiO_T_MmUVHnF' },
+    5: { name: 'Sonora',          dot: 'dot-sonora',    url: 'https://www.youtube.com/live/OGNPnQViI3g?si=P1MmTmKiRMmXJiYj' },
+    6: { name: 'Yuma',            dot: 'dot-yuma',      url: 'https://www.youtube.com/@coachella/streams' },
+    7: { name: 'Quasar',          dot: 'dot-quasar',    url: 'https://www.youtube.com/live/1KANGsDaRvw?si=AUNIfoyGA1pS1Y6e' },
+    8: { name: 'Do LaB',          dot: 'dot-dolab',     url: null },
+  };
+
+  // Timezone state — restore from localStorage
+  let currentTZ = (() => {
+    try { return localStorage.getItem('coachella2026tz') || 'America/Los_Angeles'; }
+    catch(e) { return 'America/Los_Angeles'; }
+  })();
+
+  const TZ_ABBRS = {
+    'America/Los_Angeles': 'PDT',
+    'America/Denver':      'MDT',
+    'America/Chicago':     'CDT',
+    'America/New_York':    'EDT',
+    'America/Sao_Paulo':   'BRT',
+    'Europe/London':       'BST',
+    'Europe/Paris':        'CEST',
+    'Europe/Berlin':       'CEST',
+    'Asia/Dubai':          'GST',
+    'Asia/Tokyo':          'JST',
+    'Asia/Seoul':          'KST',
+    'Australia/Sydney':    'AEST',
+  };
+
+  function formatTime(ms, tz) {
+    const d = new Date(ms);
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: tz,
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+    }).formatToParts(d);
+    let h = '', m = '', ampm = '';
+    for (const p of parts) {
+      if (p.type === 'hour')   h = p.value;
+      if (p.type === 'minute') m = p.value;
+      if (p.type === 'dayPeriod') ampm = p.value;
+    }
+    return `${h}:${m} ${ampm}`;
+  }
+
+  function renderTimes() {
+    document.querySelectorAll('.set-row').forEach(row => {
+      const start = parseInt(row.dataset.start);
+      const end   = parseInt(row.dataset.end);
+      if (!start || !end) return;
+      const timeEl = row.querySelector('.set-time');
+      if (!timeEl) return;
+      timeEl.textContent = `${formatTime(start, currentTZ)} – ${formatTime(end, currentTZ)}`;
+    });
+  }
+
+  function setTimezone(tz) {
+    currentTZ = tz;
+    try { localStorage.setItem('coachella2026tz', tz); } catch(e) {}
+    const abbr = TZ_ABBRS[tz] || tz;
+    document.getElementById('clock-tz-label').textContent = abbr;
+    renderTimes();
+    updateClock();
+  }
+  // All times in PDT. Dates: fri=Apr10, sat=Apr11, sun=Apr12 (2026)
+  const SETS = [
+    // FRIDAY — Coachella Stage
+    ['fri',0,'Record Safari',        16,15, 17,20, false],
+    ['fri',0,'Teddy Swims',          17,30, 18,20, false],
+    ['fri',0,'The xx',               19, 0, 19,55, false],
+    ['fri',0,'Sabrina Carpenter',    21, 5, 22,35, false],
+    ['fri',0,'Anyma',                 0, 0,  1, 0, true],
+    // FRIDAY — Outdoor Theatre
+    ['fri',1,'Tiffany Tyson',        14,50, 15,50, false],
+    ['fri',1,'Dabeull',              16, 0, 16,50, false],
+    ['fri',1,'Lykke Li',             17,20, 18,10, false],
+    ['fri',1,'Dijon',                18,40, 19,30, false],
+    ['fri',1,'Turnstile',            20, 5, 21, 0, false],
+    ['fri',1,'Disclosure',           22,35, 23,50, false],
+    ['fri',1,'Bonus Set from Do LaB',23,55,  1, 0, true],
+    // FRIDAY — Sahara
+    ['fri',2,'Massio',               14,30, 15,35, false],
+    ['fri',2,'Youna',                15,45, 16,35, false],
+    ['fri',2,'HUGEL',                16,50, 17,50, false],
+    ['fri',2,'Marlon Hoffstadt',     18,15, 19,15, false],
+    ['fri',2,'KATSEYE',              20, 0, 20,45, false],
+    ['fri',2,'Levity',               21,15, 22,20, false],
+    ['fri',2,'Swae Lee',             22,50, 23,40, false],
+    ['fri',2,'Sexyy Red',             0, 5,  0,55, true],
+    // FRIDAY — Mojave
+    ['fri',3,'Novasoul',             14, 0, 14,50, false],
+    ['fri',3,'Slayyyter',            15, 0, 15,45, false],
+    ['fri',3,'BINI',                 16,15, 17, 0, false],
+    ['fri',3,'Central Cee',          17,30, 18,15, false],
+    ['fri',3,'Devo',                 18,45, 19,40, false],
+    ['fri',3,'Moby',                 20,10, 21, 0, false],
+    ['fri',3,'Ethel Cain',           22,35, 23,25, false],
+    ['fri',3,'Blood Orange',         23,55,  0,45, true],
+    // FRIDAY — Gobi
+    ['fri',4,'Cahuilla Bird Singers',14,15, 14,45, false],
+    ['fri',4,'Bob Baker Marionettes',14,55, 15,35, false],
+    ['fri',4,'NewDad',               16, 0, 16,40, false],
+    ['fri',4,'Joyce Manor',          17,10, 17,50, false],
+    ['fri',4,'CMAT',                 18,15, 18,55, false],
+    ['fri',4,'fakemink',             19,20, 20, 0, false],
+    ['fri',4,'Holly Humberstone',    20,25, 21,10, false],
+    ['fri',4,'Joost',                21,50, 22,35, false],
+    ['fri',4,'Creepy Nuts',          23, 5, 23,55, false],
+    // FRIDAY — Sonora
+    ['fri',5,'Doom Dave',            13, 0, 13,40, false],
+    ['fri',5,'Febuary',              13,40, 14,10, false],
+    ['fri',5,'Carolina Durante',     14,35, 15,15, false],
+    ['fri',5,'Wednesday',            15,40, 16,20, false],
+    ['fri',5,'Freshwater',           16,50, 17,30, false],
+    ['fri',5,'The Two Lips',         18, 0, 18,40, false],
+    ['fri',5,'Ninajirachi',          19,10, 20, 0, false],
+    ['fri',5,'Cachirula & Loojan',   20,25, 21, 5, false],
+    ['fri',5,'Hot Mulligan',         22, 0, 22,45, false],
+    ['fri',5,'Not For Radio',        23,50,  0,50, true],
+    // FRIDAY — Yuma
+    ['fri',6,'Sahar Z',              13, 0, 13,45, false],
+    ['fri',6,'Jessica Brankka',      13,45, 14,45, false],
+    ['fri',6,'Arodes',               14,45, 15,45, false],
+    ['fri',6,'Groove Armada',        15,45, 16,45, false],
+    ['fri',6,'Rossi. x Chloé Caillet',16,45,18, 0,false],
+    ['fri',6,'Kettama',              18, 0, 19,15, false],
+    ['fri',6,'Prospa',               19,15, 20,30, false],
+    ['fri',6,'Max Dean x Luke Dean', 20,30, 21,45, false],
+    ['fri',6,'Max Styler',           21,45, 23,15, false],
+    ['fri',6,'Gordo',                23,15,  0,55, true],
+    // FRIDAY — Quasar
+    ['fri',7,'Tiga',                 17, 0, 19, 0, false],
+    ['fri',7,'Deep Dish',            19, 0, 21, 0, false],
+    ['fri',7,'PAWSA',                21, 0, 23, 0, false],
+    // FRIDAY — Do LaB
+    ['fri',8,'Soraya',               13, 0, 14, 0, false],
+    ['fri',8,'Fifi',                 14, 0, 15, 0, false],
+    ['fri',8,'1tbsp',                15, 0, 16, 0, false],
+    ['fri',8,'Bullet Tooth',         16, 0, 17, 0, false],
+    ['fri',8,'MCR-T',                17, 0, 18, 0, false],
+    ['fri',8,'Jazzy',                18, 0, 19, 5, false],
+    ['fri',8,'Effin',                19, 5, 20, 5, false],
+    ['fri',8,'Surprise',             20,10, 21,10, false],
+    ['fri',8,'Jigitz',               21,15, 22,30, false],
+    ['fri',8,'Andy C',               22,30, 23,45, false],
+    ['fri',8,'Surprise',             23,45,  1, 0, true],
+
+    // SATURDAY — Coachella Stage
+    ['sat',0,'Jaqck Glam',           16,15, 17,20, false],
+    ['sat',0,'Addison Rae',          17,30, 18,20, false],
+    ['sat',0,'GIVĒON',               19, 0, 19,50, false],
+    ['sat',0,'The Strokes',          21, 0, 22,10, false],
+    ['sat',0,'Justin Bieber',        23,25,  0,55, true],
+    // SATURDAY — Outdoor Theatre
+    ['sat',1,'Blondshell',           14,40, 15,25, false],
+    ['sat',1,'Los Hermanos Flores',  15,55, 16,45, false],
+    ['sat',1,'Alex G',               17,10, 18, 0, false],
+    ['sat',1,'SOMBR',                19, 5, 19,55, false],
+    ['sat',1,'Labrinth',             20,30, 21,25, false],
+    ['sat',1,'David Byrne',          22,20, 23,20, false],
+    // SATURDAY — Sahara
+    ['sat',2,'Seek-One',             14, 0, 14,45, false],
+    ['sat',2,'TEED',                 14,50, 15,50, false],
+    ['sat',2,'ZULAN',                16, 0, 16,50, false],
+    ['sat',2,'Hamdi',                17, 0, 17,55, false],
+    ['sat',2,'¥USUK€ ¥UK1MATSU',    18,15, 19,10, false],
+    ['sat',2,'Nine Inch Noize',      20, 0, 20,45, false],
+    ['sat',2,'REZZ',                 21,10, 22, 5, false],
+    ['sat',2,'Adriatique',           22,30, 23,25, false],
+    ['sat',2,'Worship',              23,55,  0,55, true],
+    // SATURDAY — Mojave
+    ['sat',3,'Jack White',           15, 0, 15,45, false],
+    ['sat',3,'Fujii Kaze',           16,30, 17,20, false],
+    ['sat',3,'Royel Otis',           17,50, 18,35, false],
+    ['sat',3,'Taemin',               19,30, 20,20, false],
+    ['sat',3,'PinkPantheress',       20,55, 21,45, false],
+    ['sat',3,'Interpol',             22,15, 23,15, false],
+    // SATURDAY — Gobi
+    ['sat',4,'Noga Erez',            14, 5, 14,50, false],
+    ['sat',4,'WHATMORE',             16, 5, 16,45, false],
+    ['sat',4,'Luísa Sonza',          17,10, 17,50, false],
+    ['sat',4,'Geese',                18,15, 19, 0, false],
+    ['sat',4,'Davido',               19,50, 20,35, false],
+    ['sat',4,'BIA',                  21, 0, 21,45, false],
+    ['sat',4,'Morat',                22,10, 23, 0, false],
+    // SATURDAY — Sonora
+    ['sat',5,'Triste Juventud',      13, 0, 14, 0, false],
+    ['sat',5,'Die Spitz',            14, 0, 14,40, false],
+    ['sat',5,'Freak Slug',           15,10, 15,50, false],
+    ['sat',5,'Ecca Vandal',          16,20, 17, 0, false],
+    ['sat',5,'Ceremony',             17,30, 18,10, false],
+    ['sat',5,'rusowsky',             18,40, 19,20, false],
+    ['sat',5,'54 Ultra',             19,50, 20,30, false],
+    ['sat',5,'Mind Enterprises',     21,45, 22,35, false],
+    // SATURDAY — Yuma
+    ['sat',6,'Yamagucci',            13, 0, 14, 0, false],
+    ['sat',6,'GENESI',               14, 0, 15, 0, false],
+    ['sat',6,'Riordan',              15, 0, 16,15, false],
+    ['sat',6,'Mahmut Orhan',         16,15, 17,30, false],
+    ['sat',6,'Ben Sterling',         17,30, 18,45, false],
+    ['sat',6,'SOSA',                 18,45, 20,15, false],
+    ['sat',6,'Bedouin',              20,15, 21,45, false],
+    ['sat',6,'Boys Noize',           21,45, 23, 0, false],
+    ['sat',6,'Armin van Buuren x Adam Beyer',23, 0, 0,55, true],
+    // SATURDAY — Quasar
+    ['sat',7,'Joezi',                17, 0, 19, 0, false],
+    ['sat',7,'Afrojack x Shimza',    19, 0, 21, 0, false],
+    ['sat',7,'David Guetta',         21, 0, 23, 0, false],
+    // SATURDAY — Do LaB
+    ['sat',8,'Lumia',                13, 0, 14, 5, false],
+    ['sat',8,'Baalti',               14, 5, 15,10, false],
+    ['sat',8,'Roddy Lima',           15,10, 16,15, false],
+    ['sat',8,'Baby J',               16,15, 17,20, false],
+    ['sat',8,'Starjunk 95',          17,20, 18,25, false],
+    ['sat',8,'Tinashe',              18,25, 19,30, false],
+    ['sat',8,'Surprise',             19,30, 20,35, false],
+    ['sat',8,'andhim',               20,35, 21,40, false],
+    ['sat',8,'Anfisa Letyago',       21,40, 22,40, false],
+    ['sat',8,'Surprise',             22,40, 23,50, false],
+    ['sat',8,'Surprise',             23,50,  1, 0, true],
+
+    // SUNDAY — Coachella Stage
+    ['sun',0,'Gabe Real',            14,45, 15,30, false],
+    ['sun',0,'Tijuana Panthers',     15,40, 16,15, false],
+    ['sun',0,'Wet Leg',              16,45, 17,30, false],
+    ['sun',0,'Major Lazer',          18,10, 19,10, false],
+    ['sun',0,'Young Thug',           19,50, 20,40, false],
+    ['sun',0,'KAROL G',              21,55, 23,30, false],
+    // SUNDAY — Outdoor Theatre
+    ['sun',1,'Juicewon',             15, 0, 15,50, false],
+    ['sun',1,'Gigi Perez',           16, 0, 16,45, false],
+    ['sun',1,'CLIPSE',               17,15, 18,10, false],
+    ['sun',1,'Foster the People',    18,45, 19,40, false],
+    ['sun',1,'Laufey',               20,40, 21,40, false],
+    ['sun',1,'BIGBANG',              22,30, 23,30, false],
+    // SUNDAY — Sahara
+    ['sun',2,'LOBOMAN',              14,30, 15,30, false],
+    ['sun',2,'Girl Math (VNSSA x NALA)',15,35,16,35,false],
+    ['sun',2,'BUNT.',                16,45, 17,45, false],
+    ['sun',2,'Duke Dumont',          18,10, 19,10, false],
+    ['sun',2,'Mochakk',              19,25, 20,25, false],
+    ['sun',2,'Subtronics',           21, 5, 22, 5, false],
+    ['sun',2,'Kaskade',              22,45, 23,55, false],
+    // SUNDAY — Mojave
+    ['sun',3,'wyldeflower',          14,30, 15,10, false],
+    ['sun',3,'Samia',                15,15, 15,55, false],
+    ['sun',3,'Little Simz',          16,25, 17,10, false],
+    ['sun',3,'Suicidal Tendencies',  17,35, 18,25, false],
+    ['sun',3,'Iggy Pop',             19,10, 20,10, false],
+    ['sun',3,'FKA twigs',            20,45, 22, 0, false],
+    // SUNDAY — Gobi
+    ['sun',4,'flowervlovlove',       14, 5, 14,35, false],
+    ['sun',4,'The Chats',            15, 0, 15,40, false],
+    ['sun',4,'COBRAH',               16, 5, 16,50, false],
+    ['sun',4,'Oklou',                17,15, 18, 0, false],
+    ['sun',4,'Black Flag',           18,30, 19, 5, false],
+    ['sun',4,'TOMORA',               19,45, 20,35, false],
+    ['sun',4,'The Rapture',          21, 5, 21,55, false],
+    // SUNDAY — Sonora
+    ['sun',5,'Panda & Chok',         13, 0, 14, 0, false],
+    ['sun',5,'Glitterer',            14, 0, 14,40, false],
+    ['sun',5,'Model/Actriz',         15,10, 15,50, false],
+    ['sun',5,'Jane Remover',         16,20, 17, 0, false],
+    ['sun',5,'Los Retros',           17,30, 18,10, false],
+    ['sun',5,'RØZ',                  18,40, 19,30, false],
+    ['sun',5,'DRAIN',                20, 0, 20,40, false],
+    ['sun',5,'French Police',        21,10, 22, 0, false],
+    // SUNDAY — Yuma
+    ['sun',6,'LE YORA',              13, 0, 14, 0, false],
+    ['sun',6,'AZZECCA',              14, 0, 15, 0, false],
+    ['sun',6,'&friends',             15, 0, 16,15, false],
+    ['sun',6,'MËSTIZA',              16,15, 17,30, false],
+    ['sun',6,'Carlita x Josh Baker', 17,30, 19, 0, false],
+    ['sun',6,'Röyksopp',             19, 0, 20,30, false],
+    ['sun',6,'WhoMadeWho',           20,30, 22, 0, false],
+    ['sun',6,'Green Velvet x AYYBO', 22, 0, 23,55, false],
+    // SUNDAY — Quasar
+    ['sun',7,'Jazzy',                16, 0, 18, 0, false],
+    ['sun',7,'JOY (Anonymous)',       18, 0, 20, 0, false],
+    ['sun',7,'Fatboy Slim',          20, 0, 22, 0, false],
+    // SUNDAY — Do LaB
+    ['sun',8,'Soul Purpose',         13, 0, 14, 0, false],
+    ['sun',8,'Cincity',              14, 0, 15, 0, false],
+    ['sun',8,'Jackie Hollander',     15, 0, 16, 0, false],
+    ['sun',8,'Brunello',             16, 0, 17, 0, false],
+    ['sun',8,"Poolside's Daytime Disco",17,0,18,0,false],
+    ['sun',8,'Surprise',             18, 0, 18,40, false],
+    ['sun',8,'Deer Jade',            18,40, 19,40, false],
+    ['sun',8,'OMAR+',                19,40, 20,45, false],
+    ['sun',8,'OMNOM',                20,45, 21,45, false],
+    ['sun',8,'Whethan',              21,45, 22,45, false],
+    ['sun',8,'Surprise',             22,45,  0, 0, true],
+  ];
+
+  // Map day id to a base Date in PDT
+  const DAY_DATES = {
+    fri: { month: 4, day: 10, year: 2026 },
+    sat: { month: 4, day: 11, year: 2026 },
+    sun: { month: 4, day: 12, year: 2026 },
+  };
+
+  function pdtDate(year, month, day, hour, min) {
+    // Build ISO string with PDT offset (-07:00)
+    const mo = String(month).padStart(2,'0');
+    const d  = String(day).padStart(2,'0');
+    const h  = String(hour).padStart(2,'0');
+    const m  = String(min).padStart(2,'0');
+    return new Date(`${year}-${mo}-${d}T${h}:${m}:00-07:00`);
+  }
+
+  // Stamp data-start / data-end (unix ms) directly onto each DOM row
+  function stampRows() {
+    // For each panel, iterate stage blocks in order
+    ['fri','sat','sun'].forEach(dayId => {
+      const panel = document.getElementById('panel-' + dayId);
+      if (!panel) return;
+      const stageBlocks = panel.querySelectorAll('.stage-block');
+      const base = DAY_DATES[dayId];
+
+      // Build a per-stage queue of sets from SETS array
+      const queues = {};
+      for (const entry of SETS) {
+        if (entry[0] !== dayId) continue;
+        const si = entry[1];
+        if (!queues[si]) queues[si] = [];
+        queues[si].push(entry);
+      }
+
+      stageBlocks.forEach((block, si) => {
+        const rows = block.querySelectorAll('.set-row');
+        const queue = queues[si] || [];
+        rows.forEach((row, ri) => {
+          const entry = queue[ri];
+          if (!entry) return;
+          const [, , , sh, sm, eh, em, nextDay] = entry;
+
+          // Start date: post-midnight sets (h < 4) belong to next calendar day
+          const startIsNextDay = sh < 4;
+          const startDate = pdtDate(base.year, base.month, base.day + (startIsNextDay ? 1 : 0), sh, sm);
+
+          // End date
+          const endIsNextDay = nextDay || eh < 4;
+          const endDate = pdtDate(base.year, base.month, base.day + (endIsNextDay ? 1 : 0), eh, em);
+
+          row.dataset.start = startDate.getTime();
+          row.dataset.end   = endDate.getTime();
+        });
+      });
+    });
+  }
+
+
+  function updateStatuses() {
+    const now = Date.now();
+    document.querySelectorAll('.set-row').forEach(row => {
+      const artistEl = row.querySelector('.set-artist');
+      if (!artistEl) return;
+
+      // Remove existing live badge
+      const existingLive = artistEl.querySelector('.live-badge');
+      if (existingLive) existingLive.remove();
+      row.classList.remove('is-past', 'is-live');
+
+      const start = parseInt(row.dataset.start);
+      const end   = parseInt(row.dataset.end);
+      if (!start || !end) return;
+
+      if (now >= end) {
+        row.classList.add('is-past');
+      } else if (now >= start && now < end) {
+        row.classList.add('is-live');
+        const badge = document.createElement('span');
+        badge.className = 'live-badge';
+        badge.textContent = 'Live';
+        artistEl.appendChild(badge);
+      }
+    });
+  }
+
+  function updateNowPlaying() {
+    const now = Date.now();
+    const bar = document.getElementById('now-playing-bar');
+    const grid = document.getElementById('np-grid');
+
+    // Collect all live rows
+    const liveItems = [];
+    ['fri','sat','sun'].forEach(dayId => {
+      const panel = document.getElementById('panel-' + dayId);
+      if (!panel) return;
+      const stageBlocks = panel.querySelectorAll('.stage-block');
+      stageBlocks.forEach((block, si) => {
+        block.querySelectorAll('.set-row').forEach(row => {
+          const start = parseInt(row.dataset.start);
+          const end   = parseInt(row.dataset.end);
+          if (!start || !end) return;
+          if (now >= start && now < end) {
+            const artistEl = row.querySelector('.set-artist');
+            const artistText = artistEl?.childNodes[0]?.textContent?.trim() || '';
+            liveItems.push({ dayId, si, artist: artistText });
+          }
+        });
+      });
+    });
+
+    if (liveItems.length === 0) {
+      bar.classList.remove('visible');
+      grid.innerHTML = '<div class="np-empty">Nothing streaming yet — check back at 4:00 PM PDT</div>';
+      return;
+    }
+
+    bar.classList.add('visible');
+    grid.innerHTML = liveItems.map(item => {
+      const meta = STAGE_META[item.si] || { name: 'Stage', dot: '', url: null };
+      const tag = meta.url ? 'a' : 'div';
+      const attrs = meta.url ? `href="${meta.url}" target="_blank" rel="noopener"` : '';
+      const linkIcon = meta.url ? `<svg class="np-link-icon" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M7 1h4v4M11 1L5 7M5 2H2a1 1 0 00-1 1v7a1 1 0 001 1h7a1 1 0 001-1V7" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>` : '';
+      return `<${tag} class="np-card" ${attrs}>
+        <div class="np-dot ${meta.dot}"></div>
+        <span class="np-stage">${meta.name}</span>
+        <span class="np-artist">${item.artist}</span>
+        ${linkIcon}
+      </${tag}>`;
+    }).join('');
+  }
+
+  // ── SEARCH ─────────────────────────────────────────────
+  let currentSearch = '';
+
+  function handleSearch(val) {
+    currentSearch = val.trim().toLowerCase();
+    document.getElementById('search-clear').classList.toggle('visible', currentSearch.length > 0);
+    document.body.classList.toggle('is-searching', currentSearch.length > 0);
+    applySearch();
+  }
+
+  function clearSearch() {
+    document.getElementById('search-input').value = '';
+    handleSearch('');
+  }
+
+  function applySearch() {
+    const q = currentSearch;
+    const panels = document.querySelectorAll('.day-panel:not(#panel-mysched)');
+
+    if (q === '') {
+      // Restore normal single-day view
+      panels.forEach(p => {
+        p.style.display = '';
+        p.querySelectorAll('.stage-block').forEach(b => {
+          b.classList.remove('search-no-match');
+          b.querySelectorAll('.set-row').forEach(r => {
+            r.classList.remove('search-hidden', 'search-match');
+          });
+        });
+      });
+      // Re-show only the active tab's panel
+      const activeTab = document.querySelector('.tab-btn.active');
+      const activeDay = activeTab?.textContent?.includes('Fri') ? 'fri'
+                      : activeTab?.textContent?.includes('Sat') ? 'sat'
+                      : activeTab?.textContent?.includes('Sun') ? 'sun' : null;
+      if (activeDay) {
+        panels.forEach(p => { p.style.display = p.id === 'panel-' + activeDay ? '' : 'none'; });
+      }
+      return;
+    }
+
+    // Show all day panels while searching
+    panels.forEach(p => { p.style.display = 'block'; });
+
+    panels.forEach(panel => {
+      panel.querySelectorAll('.stage-block').forEach(block => {
+        let anyMatch = false;
+        block.querySelectorAll('.set-row').forEach(row => {
+          const artistEl = row.querySelector('.set-artist');
+          const name = artistEl?.childNodes[0]?.textContent?.toLowerCase() || '';
+          const matches = name.includes(q);
+          row.classList.toggle('search-hidden', !matches);
+          row.classList.toggle('search-match', matches);
+          if (matches) anyMatch = true;
+        });
+        block.classList.toggle('search-no-match', !anyMatch);
+      });
+    });
+  }
+  // ── END SEARCH ──────────────────────────────────────────
+
+  // ── MY SCHEDULE + CONFLICT DETECTION ───────────────────
+  function buildMySchedule() {
+    const content = document.getElementById('mysched-content');
+    if (favs.size === 0) {
+      content.innerHTML = '<div class="mysched-empty">No artists saved yet — tap ♥ on any set to add it here</div>';
+      return;
+    }
+
+    // Collect all faved rows with timing data
+    const items = [];
+    document.querySelectorAll('.set-row').forEach(row => {
+      const key = getFavKey(row);
+      if (!favs.has(key)) return;
+      const start = parseInt(row.dataset.start);
+      const end   = parseInt(row.dataset.end);
+      if (!start || !end) return;
+      const artistEl = row.querySelector('.set-artist');
+      const artist = artistEl?.childNodes[0]?.textContent?.trim() || '';
+      const panel  = row.closest('.day-panel');
+      const dayId  = panel?.id.replace('panel-', '') || '';
+      const stage  = row.closest('.stage-block')?.querySelector('.stage-name')?.textContent?.trim() || '';
+      const stageDot = row.closest('.stage-block')?.querySelector('.stage-dot')?.className.replace('stage-dot ', '') || '';
+      items.push({ artist, stage, stageDot, dayId, start, end, key });
+    });
+
+    // Sort by start time
+    items.sort((a, b) => a.start - b.start);
+
+    // Detect conflicts — any two items on same day that overlap
+    const conflictKeys = new Set();
+    for (let i = 0; i < items.length; i++) {
+      for (let j = i + 1; j < items.length; j++) {
+        const a = items[i], b = items[j];
+        if (a.dayId !== b.dayId) continue;
+        if (a.start < b.end && b.start < a.end) {
+          conflictKeys.add(a.key);
+          conflictKeys.add(b.key);
+        }
+      }
+    }
+
+    // Update conflict indicators on the actual set rows
+    document.querySelectorAll('.set-row').forEach(row => {
+      const key = getFavKey(row);
+      row.classList.toggle('has-conflict', conflictKeys.has(key));
+    });
+
+    // Group by day
+    const days = { fri: [], sat: [], sun: [] };
+    items.forEach(i => { if (days[i.dayId]) days[i.dayId].push(i); });
+    const dayLabels = { fri: 'Friday, April 10', sat: 'Saturday, April 11', sun: 'Sunday, April 12' };
+
+    content.innerHTML = Object.entries(days).map(([dayId, dayItems]) => {
+      if (dayItems.length === 0) return '';
+      return `<div class="mysched-day">
+        <div class="mysched-day-label">${dayLabels[dayId]}</div>
+        ${dayItems.map(item => {
+          const isConflict = conflictKeys.has(item.key);
+          const conflictBadge = isConflict ? '<span class="conflict-badge">⚠ Conflict</span>' : '';
+          const timeStr = item.start ? `${formatTime(item.start, currentTZ)} – ${formatTime(item.end, currentTZ)}` : '';
+          return `<div class="mysched-item ${isConflict ? 'conflict' : ''}">
+            <div class="mysched-time">${timeStr}</div>
+            <div>
+              <span class="mysched-artist">${item.artist}${conflictBadge}</span>
+              <span class="mysched-stage"><span class="legend-dot ${item.stageDot}" style="display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:4px;vertical-align:middle;"></span>${item.stage}</span>
+            </div>
+            <button class="mysched-remove" data-key="${item.key}" title="Remove from My Schedule">✕</button>
+          </div>`;
+        }).join('')}
+      </div>`;
+    }).join('');
+  }
+  // ── END MY SCHEDULE ─────────────────────────────────────
+
+  // Event delegation for My Schedule remove buttons
+  document.getElementById('mysched-content').addEventListener('click', e => {
+    const btn = e.target.closest('.mysched-remove');
+    if (!btn) return;
+    const key = btn.dataset.key;
+    if (!key) return;
+    favs.delete(key);
+    // Also update the matching set-row in the day panels
+    document.querySelectorAll('.set-row').forEach(row => {
+      if (row.dataset.favkey === key) row.classList.remove('is-faved', 'has-conflict');
+    });
+    saveFavs();
+    updateFavUI();
+    buildMySchedule();
+  });
+  let favs = (() => {
+    try {
+      return new Set(JSON.parse(localStorage.getItem('coachella2026favs') || '[]'));
+    } catch(e) {
+      return new Set();
+    }
+  })();
+
+  function saveFavs() {
+    localStorage.setItem('coachella2026favs', JSON.stringify([...favs]));
+  }
+
+  function getFavKey(row) {
+    if (row.dataset.favkey) return row.dataset.favkey;
+    const panel = row.closest('.day-panel');
+    const dayId = panel ? panel.id.replace('panel-', '') : '';
+    const artistEl = row.querySelector('.set-artist');
+    const artist = artistEl?.childNodes[0]?.textContent?.trim() || '';
+    const key = `${dayId}::${artist}`;
+    row.dataset.favkey = key;
+    return key;
+  }
+
+  function updateFavUI() {
+    const count = favs.size;
+    const pill = document.getElementById('fav-pill');
+    const countEl = document.getElementById('fav-count');
+    countEl.textContent = count;
+    pill.classList.toggle('has-favs', count > 0);
+    const list = document.getElementById('fav-list');
+    if (count === 0) { list.innerHTML = ''; return; }
+    const items = [];
+    document.querySelectorAll('.set-row').forEach(row => {
+      const key = getFavKey(row);
+      if (!favs.has(key)) return;
+      const artistEl = row.querySelector('.set-artist');
+      const artist = artistEl?.childNodes[0]?.textContent?.trim() || '';
+      const panel = row.closest('.day-panel');
+      const dayId = panel?.id.replace('panel-', '') || '';
+      const stage = row.closest('.stage-block')?.querySelector('.stage-name')?.textContent?.trim() || '';
+      const dayLabels = { fri: 'Fri', sat: 'Sat', sun: 'Sun' };
+      items.push({ artist, stage, day: dayLabels[dayId] || dayId });
+    });
+    list.innerHTML = items.map(i =>
+      `<div class="fav-tag"><span class="fav-tag-stage">${i.day} · ${i.stage}</span>${i.artist}</div>`
+    ).join('');
+
+    // Rebuild My Schedule view too
+    buildMySchedule();
+  }
+
+  function initFavButtons() {
+    document.querySelectorAll('.set-row').forEach(row => {
+      const btn = document.createElement('button');
+      btn.className = 'fav-btn';
+      btn.textContent = '♥';
+      btn.title = 'Save to watch later';
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const key = getFavKey(row);
+        if (favs.has(key)) {
+          favs.delete(key);
+          row.classList.remove('is-faved');
+          btn.title = 'Save to watch later';
+        } else {
+          favs.add(key);
+          row.classList.add('is-faved');
+          btn.title = 'Remove from saved';
+        }
+        saveFavs();
+        updateFavUI();
+      });
+      row.appendChild(btn);
+      if (favs.has(getFavKey(row))) {
+        row.classList.add('is-faved');
+        btn.title = 'Remove from saved';
+      }
+    });
+    updateFavUI();
+  }
+
+  function toggleFavPanel() {
+    document.getElementById('fav-panel').classList.toggle('visible');
+  }
+  // ── END FAVORITES ───────────────────────────────────────
+
+  // Inject collapse arrows and wire up toggle on all stage headers
+  function initCollapse() {
+    document.querySelectorAll('.stage-header').forEach(header => {
+      const arrow = document.createElement('span');
+      arrow.className = 'collapse-arrow';
+      arrow.textContent = '▾';
+      header.appendChild(arrow);
+
+      header.addEventListener('click', e => {
+        if (e.target.closest('a')) return;
+        header.closest('.stage-block').classList.toggle('collapsed');
+      });
+    });
+  }
+  function autoSelectDay() {
+    const now = Date.now();
+    const fri = new Date('2026-04-10T00:00:00-07:00').getTime();
+    const sat = new Date('2026-04-11T00:00:00-07:00').getTime();
+    const sun = new Date('2026-04-12T00:00:00-07:00').getTime();
+    const mon = new Date('2026-04-13T00:00:00-07:00').getTime();
+
+    let targetDay = null;
+    if (now >= fri && now < sat) targetDay = 'fri';
+    else if (now >= sat && now < sun) targetDay = 'sat';
+    else if (now >= sun && now < mon) targetDay = 'sun';
+
+    if (targetDay) {
+      document.querySelectorAll('.day-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('panel-' + targetDay).classList.add('active');
+      const idx = { fri: 0, sat: 1, sun: 2 }[targetDay];
+      document.querySelectorAll('.tab-btn')[idx].classList.add('active');
+    }
+  }
+
+  function updateClock() {
+    const now = new Date();
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: currentTZ,
+      hour: 'numeric',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+    }).formatToParts(now);
+    let h = '', m = '', s = '', ampm = '';
+    for (const p of parts) {
+      if (p.type === 'hour')      h = p.value;
+      if (p.type === 'minute')    m = p.value;
+      if (p.type === 'second')    s = p.value;
+      if (p.type === 'dayPeriod') ampm = p.value;
+    }
+    document.getElementById('live-clock').textContent = `${h}:${m}:${s} ${ampm}`;
+  }
+
+  autoSelectDay();
+  stampRows();
+  renderTimes();
+  // Sync dropdown and label to restored timezone
+  const tzSelect = document.getElementById('tz-select');
+  if (tzSelect) tzSelect.value = currentTZ;
+  const restoredAbbr = TZ_ABBRS[currentTZ] || currentTZ;
+  document.getElementById('clock-tz-label').textContent = restoredAbbr;
+  initCollapse();
+  initFavButtons();
+  buildMySchedule();
+  updateClock();
+  updateStatuses();
+  updateNowPlaying();
+  setInterval(updateClock, 1000);
+  setInterval(updateStatuses, 30000);
+  setInterval(updateNowPlaying, 30000);
+
+  function switchDay(day) {
+    document.querySelectorAll('.day-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + day).classList.add('active');
+    event.target.classList.add('active');
+    // Hide search bar on My Schedule tab
+    document.querySelector('.search-bar-wrap').style.display = day === 'mysched' ? 'none' : '';
+    // Build My Schedule when switching to it
+    if (day === 'mysched') buildMySchedule();
+    // Clear search when switching days
+    if (day !== 'mysched') clearSearch();
+  }
+</script>
+
+</body>
+</html>
