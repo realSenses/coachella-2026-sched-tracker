@@ -50,6 +50,7 @@
   body {
     background: #111009;
     color: var(--sand);
+    transition: background-color 60s ease;
     font-family: 'DM Mono', monospace;
     min-height: 100vh;
     overflow-x: hidden;
@@ -60,17 +61,24 @@
     background: var(--dusk);
     padding: 2rem 2rem 1.5rem;
     position: relative;
-    overflow: hidden;
+    transition: background-color 60s ease;
   }
 
-  header::before {
-    content: '';
+  #sun-orb {
     position: absolute;
-    top: -40px; right: -40px;
-    width: 220px; height: 220px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
-    background: radial-gradient(circle, var(--rust) 0%, transparent 70%);
-    opacity: 0.4;
+    background: radial-gradient(circle, #c8431a 0%, transparent 70%);
+    opacity: 0;
+    left: 0;
+    top: 0;
+    transform: translate(-110px, -110px);
+    filter: drop-shadow(0 0 40px rgba(200, 67, 26, 0.6));
+    transition: transform 8s ease, background 8s ease, opacity 8s ease, filter 8s ease;
+    will-change: transform, background, opacity;
+    pointer-events: none;
+    z-index: 0;
   }
 
   .header-label {
@@ -1159,6 +1167,7 @@
 <body>
 
 <header>
+  <div id="sun-orb" aria-hidden="true"></div>
   <div class="header-label">YouTube Livestream — Weekend 1</div>
   <h1>COACH<span>ELLA</span><br>2026</h1>
   <div class="header-meta">
@@ -2489,6 +2498,118 @@
       if (p.type === 'dayPeriod') ampm = p.value;
     }
     document.getElementById('live-clock').textContent = `${h}:${m}:${s} ${ampm}`;
+    updateSun();
+  }
+
+  function updateSun() {
+    const sunOrb = document.getElementById('sun-orb');
+    if (!sunOrb) return;
+
+    const now = new Date();
+    const ptParts = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Los_Angeles',
+      hour: 'numeric', minute: '2-digit', hour12: false
+    }).formatToParts(now);
+
+    let ptHour = 0, ptMin = 0;
+    for (const p of ptParts) {
+      if (p.type === 'hour')   ptHour = parseInt(p.value);
+      if (p.type === 'minute') ptMin  = parseInt(p.value);
+    }
+    const dayMin = ptHour * 60 + ptMin;
+
+    // Indio CA, April: sunrise ~6:00am, sunset ~7:30pm
+    const SUNRISE = 360;
+    const SUNSET  = 1170;
+    const NIGHT_DURATION = 630; // minutes from sunset to next sunrise
+
+    const SUN_PHASES = [
+      [ 330, '#ff4422', 0.3  ],  // pre-dawn 5:30am
+      [ 360, '#ff6b35', 0.4  ],  // sunrise 6:00am
+      [ 390, '#ffaa44', 0.45 ],  // morning 6:30am
+      [ 540, '#ffe066', 0.5  ],  // mid-morning 9:00am
+      [ 660, '#fff5cc', 0.55 ],  // noon zone 11:00am
+      [ 840, '#ffcc44', 0.5  ],  // early afternoon 2:00pm
+      [ 900, '#ff8822', 0.45 ],  // late afternoon 3:00pm
+      [1020, '#e8441a', 0.4  ],  // sunset approach 5:00pm
+      [1110, '#c8431a', 0.35 ],  // final sunset glow 6:30pm
+      [1170, null,      0.0  ],  // sun gone
+    ];
+
+    const MOON_COLOR = '#b8cfe8';
+    const MOON_OPACITY_PEAK = 0.35;
+
+    const header = document.querySelector('header');
+    const W = header.offsetWidth;
+    const H = header.offsetHeight;
+    const R = 110; // half of 220px orb width
+
+    const isNight = dayMin >= SUNSET || dayMin < SUNRISE;
+    const nightMin = dayMin >= SUNSET ? dayMin - SUNSET : dayMin + (1440 - SUNSET);
+    const nightProgress = Math.min(1, nightMin / NIGHT_DURATION);
+
+    const setOrb = (x, y, color, orbOpacity) => {
+      sunOrb.style.transform = `translate(${x}px, ${y}px)`;
+      sunOrb.style.background = `radial-gradient(circle, ${color} 0%, transparent 70%)`;
+      sunOrb.style.filter = `drop-shadow(0 0 40px ${color}99)`;
+      sunOrb.style.opacity = orbOpacity.toFixed(3);
+    };
+
+    if (isNight) {
+      // Moon arcs right → left through the night
+      const angle = nightProgress * Math.PI;
+      const moonOpacity = Math.sin(angle) * MOON_OPACITY_PEAK;
+      const x = (1 - nightProgress) * W - R;
+      const y = H - Math.sin(angle) * (H * 0.8) - R;
+      setOrb(x, y, MOON_COLOR, moonOpacity);
+    } else {
+      // Sun: find daytime phase bracket and interpolate
+      let color = null, opacity = 0;
+      for (let i = SUN_PHASES.length - 1; i >= 0; i--) {
+        if (dayMin >= SUN_PHASES[i][0]) {
+          const [startMin, startColor, startOpacity] = SUN_PHASES[i];
+          const next = SUN_PHASES[i + 1] || [1440, null, 0];
+          const t = Math.min(1, (dayMin - startMin) / Math.max(1, next[0] - startMin));
+          color = t < 0.5 ? startColor : (next[1] || startColor);
+          opacity = startOpacity + (next[2] - startOpacity) * t;
+          break;
+        }
+      }
+
+      if (color && dayMin >= SUNRISE && dayMin <= SUNSET) {
+        const progress = (dayMin - SUNRISE) / (SUNSET - SUNRISE);
+        const angle = progress * Math.PI;
+        const x = progress * W - R;
+        const y = H - Math.sin(angle) * (H * 0.8) - R;
+        setOrb(x, y, color, opacity);
+      } else if (color) {
+        // Pre-dawn: parked at left edge below header
+        setOrb(-R, H - R, color, opacity);
+      } else {
+        sunOrb.style.opacity = '0';
+      }
+    }
+
+    // Background color phases [startMinute, headerColor, bodyColor]
+    const BG_PHASES = [
+      [   0, '#0b0d16', '#08090f' ],  // midnight — cool blue-black
+      [ 300, '#110e18', '#0d0a12' ],  // pre-dawn 5am — hint of warmth
+      [ 360, '#1a1410', '#111009' ],  // sunrise — back to warm
+      [1110, '#1a1410', '#111009' ],  // day stays warm
+      [1200, '#111018', '#0c0b12' ],  // 8pm — cooling begins
+      [1320, '#0b0d16', '#08090f' ],  // 10pm — full cool night
+    ];
+
+    let headerBg = BG_PHASES[0][1], bodyBg = BG_PHASES[0][2];
+    for (let i = BG_PHASES.length - 1; i >= 0; i--) {
+      if (dayMin >= BG_PHASES[i][0]) {
+        headerBg = BG_PHASES[i][1];
+        bodyBg   = BG_PHASES[i][2];
+        break;
+      }
+    }
+    header.style.backgroundColor = headerBg;
+    document.body.style.backgroundColor = bodyBg;
   }
 
   // Shared state for new features
