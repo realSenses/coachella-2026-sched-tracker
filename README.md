@@ -15,16 +15,6 @@ A single-file web app for browsing the Coachella 2026 YouTube livestream schedul
 - **Favorites** — heart any set to save it; favorites persist across sessions via `localStorage`
 - **My Schedule tab** — shows all favorited sets sorted chronologically with conflict warnings for overlapping sets
 
-## Usage
-
-Double-click `coachella2026.html`, or run a local server to avoid browser CORS restrictions on fonts (Chrome in particular blocks local font loading over `file://`):
-
-```
-python3 -m http.server 8000
-```
-
-Then open `http://localhost:8000/coachella2026.html`.
-
 ## Stack
 
 Plain HTML/CSS/JS. Fonts (`Bebas Neue`, `DM Mono`) are downloaded and served from the `fonts/` directory — no network requests required.
